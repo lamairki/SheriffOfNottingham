@@ -1,2 +1,5 @@
+include ':BoardAndroidUI'
+include ':Board.Android.UI'
+include ':Board'
 include ':app'
 rootProject.name = "Sheriff of Nottingham"
