@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/berkshire_swash</item>
     </style>
 
     <style name="Theme.SheriffOfNottingham.NoActionBar">
@@ -19,7 +20,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ToolbarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/berkshire_swash</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Theme.SheriffOfNottingham.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.SheriffOfNottingham.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.SheriffOfNottingham.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+    <item name="android:fontFamily">@font/berkshire_swash</item>
+    <item name="android:textColor">@color/white</item>
+    </style>
 </resources>
