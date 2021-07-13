@@ -77,4 +77,18 @@ public class Deck {
         // Returns all cards to the original deck
         this.goods.addAll(copyDeck);
     }
+
+    /**
+     * Draw one card from the deck
+     * @return the card drawn.
+     */
+    public GoodsCard drawCard() {
+        if(!goods.isEmpty()) {
+            return goods.remove(0);
+        }
+        else {
+            // TODO Add a shuffle function here so calls don't need to worry if the deck is empty
+            throw new ArrayIndexOutOfBoundsException();
+        }
+    }
 }
