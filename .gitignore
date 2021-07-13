@@ -13,9 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-.idea/codeStyles/codeStyleConfig.xml
-.idea/codeStyles/Project.xml
-.idea/compiler.xml
-.idea/runConfigurations.xml
-gradle/wrapper/gradle-wrapper.properties
-build.gradle
+
