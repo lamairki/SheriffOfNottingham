@@ -71,10 +71,24 @@ public class Deck {
             randIndex = rand.nextInt(copyDeck.size() + 1);
 
             // Cards must be removed from the original so there are no duplicates
-            copyDeck.add(randIndex, this.goods.remove(0));
+            copyDeck.add(randIndex, goods.remove(0));
         }
 
         // Returns all cards to the original deck
-        this.goods.addAll(copyDeck);
+        goods.addAll(copyDeck);
+    }
+
+    /**
+     * Draw one card from the deck
+     * @return the card drawn.
+     */
+    public GoodsCard drawCard() {
+        if(!goods.isEmpty()) {
+            return goods.remove(0);
+        }
+        else {
+            // TODO Add a shuffle function here so calls don't need to worry if the deck is empty
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 }
