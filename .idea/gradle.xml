@@ -11,9 +11,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Board" />
             <option value="$PROJECT_DIR$/Board.Android.UI" />
-            <option value="$PROJECT_DIR$/BoardAndroidUI" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

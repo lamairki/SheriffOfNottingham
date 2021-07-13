@@ -2,11 +2,20 @@
     <string name="app_name">Sheriff of Nottingham</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="opening_fragment_label">Opening Fragment</string>
+    <string name="setup_fragment_label">Setup Fragment</string>
     <string name="play">PLAY</string>
-    <string name="previous">Previous</string>
+    <string name="cont">Continue</string>
 
     <string name="welcoming">Welcome to Nottingham</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="player_name">Player Name:</string>
+    <string name="enter_name">Please enter your name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="select_num_players">Select the desired number of players</string>
+
+    <string-array name="player_selection">
+        <item>3 PLAYERS</item>
+        <item>4 PLAYERS</item>
+        <item>5 PLAYERS</item>
+    </string-array>
 </resources>
