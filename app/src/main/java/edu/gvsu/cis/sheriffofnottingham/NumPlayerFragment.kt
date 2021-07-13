@@ -48,18 +48,18 @@ class NumPlayerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val spinner: Spinner = view.findViewById(R.id.num_player_dropdown)
+
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
-                if (i == 0)
+                if( i == 0)
                     numPlayers = 3
-                if (i == 1)
+                if(i == 1)
                     numPlayers = 4
-                if (i == 2)
+                if(i == 2)
                     numPlayers = 5
             }
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         }
-
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment)

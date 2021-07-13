@@ -7,10 +7,10 @@ package edu.gvsu.cis.sheriffofnottingham.cards;
 
 public class GoodsCard {
 
-    private final GoodsType type;
-    private final int value;
-    private final int penalty;
-    private final boolean legal;
+    private GoodsType type;
+    private int value;
+    private int penalty;
+    private boolean legal;
 
     public GoodsCard(GoodsType type) {
 
