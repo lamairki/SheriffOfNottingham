@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_SetupFragment_to_OpeningFragment"
             app:destination="@id/OpeningFragment" />
+        <action
+            android:id="@+id/action_SetupFragment_self"
+            app:destination="@id/SetupFragment" />
     </fragment>
 
 
