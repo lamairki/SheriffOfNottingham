@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape"
+    tools:context=".ThreePlayerBoardFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/board_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="60sp"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_3p_p1"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/player_1_name"
+        android:background="@color/button_green"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/button_3p_p2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/board_header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_3p_p2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/player_2_name"
+        android:background="@color/button_green"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/button_3p_p3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/button_3p_p1"
+        app:layout_constraintTop_toBottomOf="@id/board_header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_3p_p3"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/player_3_name"
+        android:background="@color/button_green"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button_3p_p2"
+        app:layout_constraintTop_toBottomOf="@+id/board_header" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

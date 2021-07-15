@@ -24,8 +24,8 @@
         android:label="@string/setup_fragment_label"
         tools:layout="@layout/fragment_setup">
         <action
-            android:id="@+id/action_SetupFragment_to_OpeningFragment"
-            app:destination="@id/OpeningFragment" />
+            android:id="@+id/action_SetupFragment_to_BoardFragment"
+            app:destination="@id/boardFragment" />
         <action
             android:id="@+id/action_SetupFragment_self"
             app:destination="@id/SetupFragment" />
@@ -42,4 +42,9 @@
             android:id="@+id/action_numPlayerFragment_to_SetupFragment"
             app:destination="@id/SetupFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/boardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.BoardFragment"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_threeplayerboard" />
 </navigation>

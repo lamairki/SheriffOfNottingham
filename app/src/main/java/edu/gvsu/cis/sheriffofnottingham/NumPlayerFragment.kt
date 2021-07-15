@@ -13,6 +13,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import edu.gvsu.cis.sheriffofnottingham.cards.Deck
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -66,6 +67,7 @@ class NumPlayerFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
             viewModel.settings.value = NottinghamDataViewModel.GameSettings(numPlayers)
+            val deck = Deck()
             val bundle = bundleOf("playerNum" to 1)
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
 
