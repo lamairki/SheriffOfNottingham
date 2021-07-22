@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:screenOrientation="landscape"
-    tools:context=".NumPlayerFragment">
+    tools:context=".fragments.NumPlayerFragment">
     
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_select_players"

@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
+
+
 
 class BoardFragment : Fragment() {
 
-    lateinit var viewModel: NottinghamDataViewModel
+    lateinit var viewModel: GameSettingsViewModel
     var player1Name: String = ""
     var player2Name: String = ""
     var player3Name: String = ""
@@ -30,27 +35,36 @@ class BoardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+
         return inflater.inflate(R.layout.fragment_threeplayerboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(requireActivity()).get(NottinghamDataViewModel::class.java)
-        viewModel.settings.observe(this.viewLifecycleOwner, { z ->
-            numPlayers = z.numPlayers
-            player1Name = z.player1Name
-            player2Name = z.player2Name
-            player3Name = z.player3Name
-        })
-
         val buttonPlayer1 = view.findViewById<Button>(R.id.button_3p_p1)
         val buttonPlayer2 = view.findViewById<Button>(R.id.button_3p_p2)
         val buttonPlayer3 = view.findViewById<Button>(R.id.button_3p_p3)
 
-        buttonPlayer1.setText(player1Name)
-        buttonPlayer2.setText(player2Name)
-        buttonPlayer3.setText(player3Name)
+        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
+        viewModel.numPlayers.observe(this, Observer { z ->
+            numPlayers = z
+        })
+        viewModel.player1Name.observe(this, Observer { z ->
+            player1Name = z
+            buttonPlayer1.text = player1Name
+        })
+        viewModel.player2Name.observe(this, Observer { z ->
+            player2Name = z
+            buttonPlayer2.text = player2Name
+        })
+        viewModel.player3Name.observe(this, Observer { z ->
+            player3Name = z
+            buttonPlayer3.text = player3Name
+        })
+
+
 
     }
 

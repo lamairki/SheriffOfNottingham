@@ -1,4 +1,4 @@
-package edu.gvsu.cis.sheriffofnottingham
+package edu.gvsu.cis.sheriffofnottingham.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,9 +9,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import java.util.*
+import edu.gvsu.cis.sheriffofnottingham.R
+import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -19,9 +21,9 @@ import java.util.*
 class SetupFragment : Fragment() {
 
     private var playerNumber: Int = 0
-    lateinit var viewModel: NottinghamDataViewModel
+    lateinit var viewModel: GameSettingsViewModel
     var numPlayers = 0
-    var playerName: String = ""
+//    var playerName: String = ""
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -33,9 +35,9 @@ class SetupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(NottinghamDataViewModel::class.java)
-        viewModel.settings.observe(this.viewLifecycleOwner, { z ->
-            numPlayers = z.numPlayers
+        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
+        viewModel.numPlayers.observe(this.viewLifecycleOwner, Observer { z ->
+            numPlayers = z
         })
 
         arguments?.let {
@@ -46,7 +48,7 @@ class SetupFragment : Fragment() {
 
         view.findViewById<Button>(R.id.button_continue_setup).setOnClickListener {
             val playerName_ET = view.findViewById<EditText>(R.id.et_player_name)
-            playerName = playerName_ET.text.toString()
+            val playerName = playerName_ET.text.toString()
             if (playerNumber >= numPlayers) {
                 addPlayerName(playerName, playerNumber)
                 findNavController().navigate(R.id.action_SetupFragment_to_BoardFragment)
@@ -62,19 +64,14 @@ class SetupFragment : Fragment() {
 
     fun addPlayerName (name: String, i: Int) {
         if (i == 1)
-            if (viewModel.settings.value?.player1Name != null)
-                viewModel.settings.value?.player1Name = playerName
+            viewModel.player1Name.value = name
         else if (i == 2)
-            if (viewModel.settings.value?.player2Name != null)
-                viewModel.settings.value?.player2Name = playerName
+            viewModel.player2Name.value = name
         else if (i == 3)
-            if (viewModel.settings.value?.player3Name != null)
-                viewModel.settings.value?.player3Name = playerName
+            viewModel.player3Name.value = name
         else if (i == 4)
-            if (viewModel.settings.value?.player4Name != null)
-                viewModel.settings.value?.player4Name = playerName
+            viewModel.player4Name.value = name
         else if (i == 5)
-            if (viewModel.settings.value?.player5Name != null)
-                viewModel.settings.value?.player5Name = playerName
+            viewModel.player5Name.value = name
     }
 }

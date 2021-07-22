@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/OpeningFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.OpeningFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.OpeningFragment"
         android:label="@string/opening_fragment_label"
         tools:layout="@layout/fragment_opening">
 
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/SetupFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.SetupFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.SetupFragment"
         android:label="@string/setup_fragment_label"
         tools:layout="@layout/fragment_setup">
         <action
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/numPlayerFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.NumPlayerFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.NumPlayerFragment"
         android:label="fragment_num_player"
         tools:layout="@layout/fragment_num_player" >
         <action

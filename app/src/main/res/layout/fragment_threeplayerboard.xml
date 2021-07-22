@@ -21,11 +21,13 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p1"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/player_1_name"
+        android:paddingHorizontal="16dp"
         android:background="@color/button_green"
+        android:text="@string/player_1_name"
+        android:textSize="20dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/button_3p_p2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,10 +36,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p2"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:paddingHorizontal="16dp"
         android:text="@string/player_2_name"
+        android:textSize="20dp"
         android:background="@color/button_green"
         android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@id/button_3p_p3"
@@ -47,10 +51,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p3"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:paddingHorizontal="16dp"
         android:text="@string/player_3_name"
+        android:textSize="20dp"
         android:background="@color/button_green"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

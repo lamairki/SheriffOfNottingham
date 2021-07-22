@@ -6,14 +6,21 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
+import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity() : AppCompatActivity() {
+
+    lateinit var viewModel: GameSettingsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
+
+        viewModel = ViewModelProvider(this).get(GameSettingsViewModel::class.java)
 
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -36,4 +43,5 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
 }

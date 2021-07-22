@@ -1,4 +1,4 @@
-package edu.gvsu.cis.sheriffofnottingham
+package edu.gvsu.cis.sheriffofnottingham.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,9 +10,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import androidx.core.os.bundleOf
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
+import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
 
 /**
@@ -22,8 +23,7 @@ class NumPlayerFragment : Fragment() {
 
     private var numPlayers = 3
 
-    lateinit var viewModel: NottinghamDataViewModel
-
+lateinit var viewModel: GameSettingsViewModel
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -48,8 +48,7 @@ class NumPlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(NottinghamDataViewModel::class.java)
-
+        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
 
         val spinner: Spinner = view.findViewById(R.id.num_player_dropdown)
 
@@ -66,7 +65,7 @@ class NumPlayerFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
-            viewModel.settings.value = NottinghamDataViewModel.GameSettings(numPlayers)
+            viewModel.numPlayers.value = numPlayers
             val deck = Deck()
             val bundle = bundleOf("playerNum" to 1)
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
