@@ -19,7 +19,7 @@ public class Deck {
     private static final int NUM_SILK = 12;
     private static final int NUM_CROSSBOW = 5;
     private static final int DECK_SIZE = NUM_APPLES + NUM_BREAD + NUM_CHICKENS + NUM_CHEESE +
-                                         NUM_PEPPER + NUM_MEAD + NUM_SILK + NUM_CROSSBOW;
+            NUM_PEPPER + NUM_MEAD + NUM_SILK + NUM_CROSSBOW;
 
     private ArrayList<GoodsCard> goods = new ArrayList<>(DECK_SIZE);
 
@@ -76,5 +76,19 @@ public class Deck {
 
         // Returns all cards to the original deck
         this.goods.addAll(copyDeck);
+    }
+
+    /**
+     * Draw one card from the deck
+     * @return the card drawn.
+     */
+    public GoodsCard drawCard() {
+        if(!goods.isEmpty()) {
+            return goods.remove(0);
+        }
+        else {
+            // TODO Add a shuffle function here so calls don't need to worry if the deck is empty
+            throw new ArrayIndexOutOfBoundsException();
+        }
     }
 }
