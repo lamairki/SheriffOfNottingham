@@ -24,11 +24,17 @@
         android:label="@string/setup_fragment_label"
         tools:layout="@layout/fragment_setup">
         <action
-            android:id="@+id/action_SetupFragment_to_BoardFragment"
-            app:destination="@id/boardFragment" />
+            android:id="@+id/action_SetupFragment_to_ThreePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
         <action
             android:id="@+id/action_SetupFragment_self"
             app:destination="@id/SetupFragment" />
+        <action
+            android:id="@+id/action_SetupFragment_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_SetupFragment_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
     </fragment>
 
 
@@ -43,8 +49,16 @@
             app:destination="@id/SetupFragment" />
     </fragment>
     <fragment
-        android:id="@+id/boardFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.BoardFragment"
+        android:id="@+id/threePlayerBoardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.ThreePlayerBoard"
         android:label="fragment_board"
         tools:layout="@layout/fragment_threeplayerboard" />
+    <fragment
+        android:id="@+id/fourPlayerBoard"
+        android:name="edu.gvsu.cis.sheriffofnottingham.FourPlayerBoard"
+        android:label="FourPlayerBoard" />
+    <fragment
+        android:id="@+id/FivePlayerBoardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.FivePlayerBoard"
+        android:label="BoardFragment" />
 </navigation>

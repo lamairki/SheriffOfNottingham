@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:screenOrientation="landscape"
     tools:context=".fragments.SetupFragment">
 
@@ -42,7 +43,7 @@
         android:paddingHorizontal="10dp"
         android:textSize="35sp"
         android:text="@string/cont"
-        android:background="@color/button_green"
+        android:background="@color/green"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

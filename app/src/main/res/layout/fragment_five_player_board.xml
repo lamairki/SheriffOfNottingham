@@ -6,63 +6,92 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:screenOrientation="landscape"
-    tools:context=".ThreePlayerBoardFragment">
+    tools:context=".FourPlayerBoardFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/board_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
         android:textSize="60sp"
+        android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_3p_p1"
+        android:id="@+id/button_5p_p1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/green"
         android:paddingHorizontal="16dp"
+        android:background="@color/green"
         android:text="@string/player_1_name"
-        android:textColor="@color/background"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@id/button_3p_p2"
+        android:textColor="@color/background"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_5p_p2"
         app:layout_constraintTop_toBottomOf="@id/board_header" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_3p_p2"
+        android:id="@+id/button_5p_p2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/red"
         android:paddingHorizontal="16dp"
         android:text="@string/player_2_name"
-        android:textColor="@color/background"
         android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@id/button_3p_p3"
+        android:background="@color/red"
+        android:textColor="@color/background"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/button_3p_p1"
+        app:layout_constraintStart_toEndOf="@id/button_5p_p1"
+        app:layout_constraintEnd_toStartOf="@id/button_5p_p3"
         app:layout_constraintTop_toBottomOf="@id/board_header" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_3p_p3"
+        android:id="@+id/button_5p_p3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:background="@color/purple"
         android:paddingHorizontal="16dp"
         android:text="@string/player_3_name"
-        android:textColor="@color/background"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/purple"
+        android:textColor="@color/background"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/button_3p_p2"
-        app:layout_constraintTop_toBottomOf="@+id/board_header" />
+        app:layout_constraintStart_toEndOf="@id/button_5p_p2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/board_header" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_5p_p4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/player_4_name"
+        android:textSize="20dp"
+        android:background="@color/blue"
+        android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/button_5p_p5"
+        app:layout_constraintTop_toBottomOf="@id/button_5p_p1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_5p_p5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="16dp"
+        android:text="@string/player_4_name"
+        android:textSize="20dp"
+        android:background="@color/yellow"
+        android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/button_5p_p4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_5p_p3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -66,7 +66,6 @@ lateinit var viewModel: GameSettingsViewModel
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
             viewModel.numPlayers.value = numPlayers
-            val deck = Deck()
             val bundle = bundleOf("playerNum" to 1)
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
 

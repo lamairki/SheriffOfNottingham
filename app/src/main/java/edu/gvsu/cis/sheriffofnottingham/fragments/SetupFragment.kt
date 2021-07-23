@@ -51,7 +51,12 @@ class SetupFragment : Fragment() {
             val playerName = playerName_ET.text.toString()
             if (playerNumber >= numPlayers) {
                 addPlayerName(playerName, playerNumber)
-                findNavController().navigate(R.id.action_SetupFragment_to_BoardFragment)
+                if (numPlayers == 3)
+                    findNavController().navigate(R.id.action_SetupFragment_to_ThreePlayerBoardFragment)
+                if (numPlayers == 4)
+                    findNavController().navigate(R.id.action_SetupFragment_to_fourPlayerBoard)
+                if (numPlayers == 5)
+                    findNavController().navigate(R.id.action_SetupFragment_to_FivePlayerBoardFragment)
             }
             else {
                 addPlayerName(playerName, playerNumber)

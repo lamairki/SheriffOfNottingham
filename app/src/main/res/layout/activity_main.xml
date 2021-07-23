@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/button_green"
+            android:background="@color/green"
             app:popupTheme="@style/Theme.SheriffOfNottingham.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
