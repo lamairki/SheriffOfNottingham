@@ -91,4 +91,9 @@ public class Deck {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
+
+    // This is currently only used in testing
+    public int getDeckSize() {
+        return this.goods.size();
+    }
 }

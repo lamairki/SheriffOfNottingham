@@ -21,11 +21,13 @@ public class Discard {
      * @return
      */
     public GoodsCard lookAt(int index) {
-        if(index >= goods.size()) {
-            throw new ArrayIndexOutOfBoundsException();
+
+        // Checking for index may be unnecessary as is, but leaves the option for more custom handling
+        if(index < goods.size() && index >= 0) {
+            return goods.get(index);
         }
         else {
-            return goods.get(index);
+            throw new ArrayIndexOutOfBoundsException();
         }
     }
 
@@ -37,5 +39,10 @@ public class Discard {
             // The player cannot draw from here if there are no cards
             throw new ArrayIndexOutOfBoundsException();
         }
+    }
+
+    // Currently only used for testing
+    public int getDiscardSize() {
+        return this.goods.size();
     }
 }
