@@ -12,6 +12,7 @@ public class Board {
 
     public Board(int numPlayers) {
         deck = new Deck();
+        deck.shuffle();
         discard1 = new Discard(deck);
         discard2 = new Discard(deck);
         players = new Player[numPlayers];

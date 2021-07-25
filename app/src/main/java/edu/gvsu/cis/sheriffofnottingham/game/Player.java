@@ -1,5 +1,6 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck;
@@ -37,6 +38,10 @@ public class Player {
         while(hand.size() < HAND_SIZE) {
             hand.add(d.drawCard());
         }
+    }
+
+    public void addToBag(GoodsCard card) {
+        this.playerBag.add(card);
     }
 
     /**
@@ -109,5 +114,21 @@ public class Player {
         else {
             //TODO look at rules for how players pay more than they own in gold
         }
+    }
+
+    public ArrayList<GoodsCard> getHand() {
+        return this.hand;
+    }
+
+    public ArrayList<GoodsCard> getPlayerBag() {
+        return this.playerBag;
+    }
+
+    public ArrayList<GoodsCard> getMarket() {
+        return this.market;
+    }
+
+    public int getGold() {
+        return this.gold;
     }
 }
