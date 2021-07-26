@@ -61,7 +61,7 @@ class PlayerHandFragment : Fragment() {
 //        val hand = player.hand.toList()
 //        var c: Int = 0
         for (i in cards) {
-            i.setImageResource(R.drawable.apple_card)
+            i.setImageResource(R.drawable.legal_goods_apples)
 //            when(hand.get(c).type) {
 //                GoodsType.CHICKENS -> i.setImageResource(R.drawable.chicken_card)
 //                GoodsType.BREAD -> i.setImageResource(R.drawable.bread_card)
