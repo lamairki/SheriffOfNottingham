@@ -113,6 +113,11 @@ public class Player implements Serializable {
         }
         else {
             //TODO look at rules for how players pay more than they own in gold
+            //PLayer must pay with legal goods first (the value = gold) if no legal goods
+            //then must pay with contraband.  If all legal and illegal goods have been exhausted,
+            //then the debt is considered paid.
+            //(If you owe 1 coin but only have an apple (value 2) to pay with, you forfeit the
+            //entire value of the apple
         }
     }
 }

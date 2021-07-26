@@ -11,7 +11,7 @@ public enum GoodsType {
     CHEESE(3, 2, true),
     APPLES(2, 2, true),
     CROSSBOW(9, 4, false),
-    SILK(7, 4, false),
+    SILK(8, 4, false),
     MEAD(7, 4, false),
     PEPPER(6, 4, false);
 
