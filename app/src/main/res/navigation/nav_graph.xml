@@ -52,13 +52,39 @@
         android:id="@+id/threePlayerBoardFragment"
         android:name="edu.gvsu.cis.sheriffofnottingham.ThreePlayerBoard"
         android:label="fragment_board"
-        tools:layout="@layout/fragment_threeplayerboard" />
+        tools:layout="@layout/fragment_threeplayerboard" >
+        <action
+            android:id="@+id/action_threePlayerBoardFragment_to_playerHandFragment"
+            app:destination="@id/playerHandFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fourPlayerBoard"
         android:name="edu.gvsu.cis.sheriffofnottingham.FourPlayerBoard"
-        android:label="FourPlayerBoard" />
+        android:label="FourPlayerBoard" >
+        <action
+            android:id="@+id/action_fourPlayerBoard_to_playerHandFragment"
+            app:destination="@id/playerHandFragment" />
+    </fragment>
     <fragment
         android:id="@+id/FivePlayerBoardFragment"
         android:name="edu.gvsu.cis.sheriffofnottingham.FivePlayerBoard"
-        android:label="BoardFragment" />
+        android:label="BoardFragment" >
+        <action
+            android:id="@+id/action_FivePlayerBoardFragment_to_playerHandFragment"
+            app:destination="@id/playerHandFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerHandFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerHandFragment"
+        android:label="PlayerHandFragment" >
+        <action
+            android:id="@+id/action_playerHandFragment_to_threePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerHandFragment_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_playerHandFragment_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
+    </fragment>
 </navigation>

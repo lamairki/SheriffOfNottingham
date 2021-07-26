@@ -19,6 +19,8 @@
     <string name="player_4_name">Player 4</string>
     <string name="player_5_name">Player 5</string>
 
+    <string name="return_label">Return</string>
+
     <string-array name="player_selection">
         <item>3 PLAYERS</item>
         <item>4 PLAYERS</item>

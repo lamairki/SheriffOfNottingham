@@ -1,7 +1,11 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck;
 import edu.gvsu.cis.sheriffofnottingham.cards.Discard;
+import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel;
 
 public class Board {
 
@@ -9,6 +13,7 @@ public class Board {
     private Deck deck;
     private Discard discard1;
     private Discard discard2;
+
 
     public Board(int numPlayers) {
         deck = new Deck();

@@ -23,7 +23,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="@color/green"
         android:paddingHorizontal="16dp"
@@ -38,7 +38,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="@color/red"
         android:paddingHorizontal="16dp"
@@ -53,7 +53,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_3p_p3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:background="@color/purple"
         android:paddingHorizontal="16dp"

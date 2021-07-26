@@ -1,5 +1,6 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck;
@@ -12,7 +13,7 @@ import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType;
  *              are the sheriff.
  */
 
-public class Player {
+public class Player implements Serializable {
 
     private static final int HAND_SIZE = 5;
     private static final int START_GOLD = 10;
@@ -37,6 +38,10 @@ public class Player {
         while(hand.size() < HAND_SIZE) {
             hand.add(d.drawCard());
         }
+    }
+
+    public ArrayList<GoodsCard> getHand() {
+        return this.hand;
     }
 
     /**

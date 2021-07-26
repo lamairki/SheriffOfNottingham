@@ -22,7 +22,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_5p_p1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:paddingHorizontal="16dp"
         android:background="@color/green"
@@ -37,7 +37,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_5p_p2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:paddingHorizontal="16dp"
         android:text="@string/player_2_name"
@@ -52,7 +52,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_5p_p3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:paddingHorizontal="16dp"
         android:text="@string/player_3_name"
@@ -67,7 +67,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_5p_p4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:paddingHorizontal="16dp"
         android:text="@string/player_4_name"
@@ -82,7 +82,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_5p_p5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="50dp"
         android:paddingHorizontal="16dp"
         android:text="@string/player_4_name"
