@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
-import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 class MainActivity() : AppCompatActivity() {

@@ -10,15 +10,20 @@ import java.util.*
 
 class PlayViewModel : ViewModel() {
     private var _numPlayers = MutableLiveData<Int>()
+    private var _currPlayer = MutableLiveData<MutableLiveData<Player>>()
+    private var _sheriff = MutableLiveData<MutableLiveData<Player>>()
     private var _player1 = MutableLiveData<Player>()
     private var _player2 = MutableLiveData<Player>()
     private var _player3 = MutableLiveData<Player>()
     private var _player4 = MutableLiveData<Player>()
     private var _player5 = MutableLiveData<Player>()
     private var _deck = MutableLiveData<Deck>()
-    private var _currPlayer = MutableLiveData<Player>()
 
 
+    val currPlayer
+        get() = _currPlayer
+    val sheriff
+        get() = _sheriff
     val numPlayers
         get() = _numPlayers
     val player1
@@ -33,6 +38,7 @@ class PlayViewModel : ViewModel() {
         get() = _player5
     val deck
         get() = _deck
+
 
     /**
      * This method fills the rest of the cards in their hand
@@ -66,6 +72,95 @@ class PlayViewModel : ViewModel() {
     fun addCardsToBag(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
         for (card in cardsToAdd) {
             p.value?.addCardToBag(card)
+        }
+    }
+
+    fun turnComplete(p: MutableLiveData<Player>) {
+        // Determines player to follow player 1
+        if (p.value == player1) {
+            if (sheriff.value == player2)
+                currPlayer.value = player3
+            else
+                currPlayer.value = player2
+        }
+
+        // Determines player to follow player 2
+        if (p.value == player2) {
+            if (numPlayers.value == 3)
+                if (sheriff.value == player3)
+                    currPlayer.value = player1
+                else
+                    currPlayer.value = player3
+            else
+                if (sheriff.value == player3)
+                    currPlayer.value = player4
+                else
+                    currPlayer.value = player3
+        }
+
+        // Determines player to follow player 3
+        if (p.value == player3) {
+            if (numPlayers.value == 3)
+                if (sheriff.value == player1)
+                    currPlayer.value = player2
+                else
+                    currPlayer.value = player1
+            else if (numPlayers.value == 4)
+                if (sheriff.value == player4)
+                    currPlayer.value = player1
+                else
+                    currPlayer.value = player4
+            else
+                if (sheriff.value == player4)
+                    currPlayer.value = player5
+                else
+                    currPlayer.value = player4
+        }
+
+        // Determines player to follow player 4
+        if (p.value == player4) {
+            if (numPlayers.value == 4)
+                if (sheriff.value == player1)
+                    currPlayer.value = player2
+                else
+                    currPlayer.value = player1
+            else
+                if (sheriff.value == player5)
+                    currPlayer.value = player1
+                else
+                    currPlayer.value = player5
+        }
+
+        // Determines player to follow player 5
+        if (p.value == player5) {
+            if (sheriff.value == player1)
+                currPlayer.value = player2
+            else
+                currPlayer.value = player1
+        }
+    }
+
+    fun newSheriff(s: MutableLiveData<Player>) {
+        if (s.value == player1) {
+            sheriff.value = player2
+        }
+        if (s.value == player2) {
+            sheriff.value = player3
+        }
+        if (s.value == player3) {
+            if (numPlayers.value == 3)
+                sheriff.value = player1
+            else
+                sheriff.value = player4
+        }
+        if (s.value == player4) {
+            if (numPlayers.value == 4)
+                sheriff.value = player1
+            else
+                sheriff.value = player5
+        }
+        if (s.value == player5) {
+            sheriff.value = player1
         }
     }
 }

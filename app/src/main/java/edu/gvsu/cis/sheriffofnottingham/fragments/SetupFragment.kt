@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.game.Player
-import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 /**
@@ -53,12 +52,21 @@ class SetupFragment : Fragment() {
             val playerName = playerName_ET.text.toString()
             if (playerNumber >= numPlayers) {
                 addPlayer(playerName, playerNumber)
-                if (numPlayers == 3)
+                if (numPlayers == 3) {
+                    playViewModel.sheriff.value = playViewModel.player1
+                    playViewModel.currPlayer.value = playViewModel.player2
                     findNavController().navigate(R.id.action_SetupFragment_to_ThreePlayerBoardFragment)
-                if (numPlayers == 4)
+                }
+                if (numPlayers == 4) {
+                    playViewModel.sheriff.value = playViewModel.player1
+                    playViewModel.currPlayer.value = playViewModel.player2
                     findNavController().navigate(R.id.action_SetupFragment_to_fourPlayerBoard)
-                if (numPlayers == 5)
+                }
+                if (numPlayers == 5) {
+                    playViewModel.sheriff.value = playViewModel.player1
+                    playViewModel.currPlayer.value = playViewModel.player2
                     findNavController().navigate(R.id.action_SetupFragment_to_FivePlayerBoardFragment)
+                }
             }
             else {
                 addPlayer(playerName, playerNumber)

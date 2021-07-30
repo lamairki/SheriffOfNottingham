@@ -44,6 +44,11 @@ public class Player implements Serializable {
     }
 
     /**
+     * Getter for player number
+     */
+    public int getPlayerNum() { return playerNum; }
+
+    /**
      * This method fills the rest of the cards in their hand
      * from the deck. This is NOT to be used when drawing from
      * the discard piles.

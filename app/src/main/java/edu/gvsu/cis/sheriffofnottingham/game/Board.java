@@ -1,11 +1,7 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck;
 import edu.gvsu.cis.sheriffofnottingham.cards.Discard;
-import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel;
 
 public class Board {
 

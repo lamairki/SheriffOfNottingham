@@ -9,21 +9,25 @@ import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType
+import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 import java.util.*
 
-private const val BAG_MAX = 4
-private const val BAG_MIN = 1
-var playerName: String = ""
-var numPlayers: Int = 0
-var playerNum = 0
-var bagCards = 0
 lateinit var playViewModel: PlayViewModel
+private const val BAG_MAX = 5
+private const val BAG_MIN = 1
+lateinit var player: MutableLiveData<Player>
+//var playerName: String = ""
+var numPlayers: Int = 0
+//var playerNum = 0
+var bagCards = 0
+
 lateinit var hand: ArrayList<GoodsCard>
 
 
@@ -42,12 +46,13 @@ class PlayerHandFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            playerName = it.getString("playerName").toString()
-            playerNum = it.getInt("playerNum")
-            numPlayers = it.getInt("numPlayers")
-        }
+
         playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
+
+        numPlayers = playViewModel.numPlayers.value!!
+
+        player = playViewModel.currPlayer.value!!
+
 
         val card_1 = view.findViewById<ToggleButton>(R.id.card_1)
         val card_2 = view.findViewById<ToggleButton>(R.id.card_2)
@@ -59,15 +64,21 @@ class PlayerHandFragment : Fragment() {
         val cards = arrayOf(card_1, card_2, card_3, card_4, card_5, card_6)
 
         val nameTextView = view.findViewById<TextView>(R.id.player_name)
-        nameTextView.setText(playerName)
+        nameTextView.setText(player.value?.playerName.toString())
 
         view.findViewById<Button>(R.id.return_button).setOnClickListener {
-            if(numPlayers == 3)
+            if(numPlayers == 3) {
+                playViewModel.turnComplete(player)
                 findNavController().navigate(R.id.action_playerHandFragment_to_threePlayerBoardFragment)
-            if(numPlayers == 4)
+            }
+            if(numPlayers == 4) {
+                playViewModel.turnComplete(player)
                 findNavController().navigate(R.id.action_playerHandFragment_to_fourPlayerBoard)
-            if(numPlayers == 5)
+            }
+            if(numPlayers == 5) {
+                playViewModel.turnComplete(player)
                 findNavController().navigate(R.id.action_playerHandFragment_to_FivePlayerBoardFragment)
+            }
         }
 
         view.findViewById<Button>(R.id.in_bag_button).setOnClickListener {
@@ -76,13 +87,13 @@ class PlayerHandFragment : Fragment() {
                 if (cards.get(i).isChecked)
                     cardsToBag.add(hand.get(i))
             }
-            when (playerNum) {
+            when (player.value?.playerNum) {
                 1 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player1)
                 2 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player2)
                 3 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player3)
             }
 
-            when (playerNum) {
+            when (player.value?.playerNum) {
                 1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
                 2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
                 3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
@@ -91,7 +102,7 @@ class PlayerHandFragment : Fragment() {
         }
         setupCardListeners(cards)
 
-        when (playerNum) {
+        when (player.value?.playerNum) {
             1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
             2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
             3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>

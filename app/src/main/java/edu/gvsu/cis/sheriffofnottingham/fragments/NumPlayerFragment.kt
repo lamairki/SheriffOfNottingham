@@ -12,7 +12,6 @@ import android.widget.Spinner
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
