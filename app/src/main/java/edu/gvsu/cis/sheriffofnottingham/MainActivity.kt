@@ -10,7 +10,6 @@ import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 class MainActivity() : AppCompatActivity() {
 
-    lateinit var viewModel: GameSettingsViewModel
     lateinit var playViewModel: PlayViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +17,6 @@ class MainActivity() : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        viewModel = ViewModelProvider(this).get(GameSettingsViewModel::class.java)
         playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
 
     }

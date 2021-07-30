@@ -1,5 +1,6 @@
 package edu.gvsu.cis.sheriffofnottingham.models
 
+import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
@@ -8,6 +9,7 @@ import edu.gvsu.cis.sheriffofnottingham.game.Player
 import java.util.*
 
 class PlayViewModel : ViewModel() {
+    private var _numPlayers = MutableLiveData<Int>()
     private var _player1 = MutableLiveData<Player>()
     private var _player2 = MutableLiveData<Player>()
     private var _player3 = MutableLiveData<Player>()
@@ -17,6 +19,8 @@ class PlayViewModel : ViewModel() {
     private var _currPlayer = MutableLiveData<Player>()
 
 
+    val numPlayers
+        get() = _numPlayers
     val player1
         get() = _player1
     val player2

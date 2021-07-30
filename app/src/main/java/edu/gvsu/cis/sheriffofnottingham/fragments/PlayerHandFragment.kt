@@ -76,146 +76,72 @@ class PlayerHandFragment : Fragment() {
                 if (cards.get(i).isChecked)
                     cardsToBag.add(hand.get(i))
             }
+            when (playerNum) {
+                1 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player1)
+                2 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player2)
+                3 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player3)
+            }
+
+            when (playerNum) {
+                1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
+                2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
+                3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
+            }
+            refreshCards(cards)
         }
-
-
-        card_1.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_1.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-        card_2.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_2.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-        card_3.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_3.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-        card_4.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_4.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-        card_5.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_5.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-        card_6.setOnCheckedChangeListener { _, isChecked ->
-            if (bagCards >= BAG_MAX) {
-                if (isChecked) {
-                    card_6.setChecked(false)
-                    bagCards = BAG_MAX
-                }
-                else {
-                    bagCards--
-                }
-            }
-            else {
-                if (isChecked) {
-                    bagCards++
-                } else {
-                    bagCards--
-                }
-            }
-        }
-
-
+        setupCardListeners(cards)
 
         when (playerNum) {
-            1 -> hand = playViewModel.getPlayerHand(1)?.toList() as ArrayList<GoodsCard>
-            2 -> hand = playViewModel.getPlayerHand(2)?.toList() as ArrayList<GoodsCard>
-            3 -> hand = playViewModel.getPlayerHand(3)?.toList() as ArrayList<GoodsCard>
+            1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
+            2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
+            3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
         }
+        refreshCards(cards)
+    }
 
+    private fun setupCardListeners(cards: Array<ToggleButton>) {
+        for (i in cards) {
+            i.setOnCheckedChangeListener { _, isChecked ->
+                if (bagCards >= BAG_MAX) {
+                    if (isChecked) {
+                        i.setChecked(false)
+                        bagCards = BAG_MAX
+                    } else {
+                        bagCards--
+                    }
+                } else {
+                    if (isChecked) {
+                        bagCards++
+                    } else {
+                        bagCards--
+                    }
+                }
+            }
+        }
+    }
 
-
+    private fun refreshCards(cards: Array<ToggleButton>) {
         var c: Int = 0
         for (i in cards) {
-            when(hand.get(c).type) {
-                GoodsType.CHICKENS -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_chicken))
-                GoodsType.BREAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_bread))
-                GoodsType.CHEESE -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_cheese))
-                GoodsType.APPLES -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_apples))
-                GoodsType.CROSSBOW -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_crossbow))
-                GoodsType.SILK -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
-                GoodsType.MEAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
-                GoodsType.PEPPER -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+            if (c < hand.size) {
+                when (hand.get(c).type) {
+                    GoodsType.CHICKENS -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_chicken))
+                    GoodsType.BREAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_bread))
+                    GoodsType.CHEESE -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_cheese))
+                    GoodsType.APPLES -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_apples))
+                    GoodsType.CROSSBOW -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_crossbow))
+                    GoodsType.SILK -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
+                    GoodsType.MEAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
+                    GoodsType.PEPPER -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+                }
+            }
+            else {
+                i.setBackground(ContextCompat.getDrawable(requireActivity(), R.color.transparent))
+                i.setEnabled(false)
             }
             c++
         }
+        for (i in cards)
+            i.setChecked(false)
     }
 }

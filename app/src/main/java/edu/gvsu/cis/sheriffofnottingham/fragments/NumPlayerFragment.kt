@@ -24,7 +24,6 @@ class NumPlayerFragment : Fragment() {
 
     private var numPlayers = 3
 
-lateinit var viewModel: GameSettingsViewModel
 lateinit var playViewModel: PlayViewModel
 
     override fun onCreateView(
@@ -51,7 +50,6 @@ lateinit var playViewModel: PlayViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
         playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
 
         val spinner: Spinner = view.findViewById(R.id.num_player_dropdown)
@@ -69,7 +67,7 @@ lateinit var playViewModel: PlayViewModel
         }
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
-            viewModel.numPlayers.value = numPlayers
+            playViewModel.numPlayers.value = numPlayers
             playViewModel.deck.value = Deck()
             playViewModel.shuffleDeck()
             val bundle = bundleOf("playerNum" to 1)

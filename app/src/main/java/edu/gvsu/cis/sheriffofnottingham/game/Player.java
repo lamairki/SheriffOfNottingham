@@ -17,6 +17,7 @@ public class Player implements Serializable {
 
     private static final int HAND_SIZE = 5;
     private static final int START_GOLD = 10;
+    private String playerName = "";
     private ArrayList<GoodsCard> hand = new ArrayList<>(HAND_SIZE);
     private ArrayList<GoodsCard> market = new ArrayList<>();
     private ArrayList<GoodsCard> playerBag = new ArrayList<>();
@@ -27,6 +28,19 @@ public class Player implements Serializable {
     public Player(int playerNum) {
         this.playerNum = playerNum;
         this.gold = START_GOLD;
+    }
+
+    public Player(int playerNum, String pName) {
+        this.playerNum = playerNum;
+        this.playerName = pName;
+        this.gold = START_GOLD;
+    }
+
+    /**
+     * Getter method for player name
+     */
+    public String getPlayerName() {
+        return playerName;
     }
 
     /**
@@ -58,8 +72,8 @@ public class Player implements Serializable {
      * This method added to add cards to the players bags from their hand
      */
     public void addCardToBag(GoodsCard gc) {
-        playerBag.add(gc);
-        hand.remove(gc);
+        this.playerBag.add(gc);
+        this.hand.remove(gc);
     }
 
     /**

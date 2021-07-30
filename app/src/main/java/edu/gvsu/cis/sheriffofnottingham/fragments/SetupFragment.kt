@@ -23,7 +23,6 @@ import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 class SetupFragment : Fragment() {
 
     private var playerNumber: Int = 0
-    lateinit var viewModel: GameSettingsViewModel
     lateinit var playViewModel: PlayViewModel
     var numPlayers = 0
 //    var playerName: String = ""
@@ -38,9 +37,8 @@ class SetupFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
         playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
-        viewModel.numPlayers.observe(this.viewLifecycleOwner, Observer { z ->
+        playViewModel.numPlayers.observe(this.viewLifecycleOwner, Observer { z ->
             numPlayers = z
         })
 
@@ -73,28 +71,23 @@ class SetupFragment : Fragment() {
 
     fun addPlayer (name: String, i: Int) {
         if (i == 1) {
-            viewModel.player1Name.value = name
-            playViewModel.player1.value = Player(i)
+            playViewModel.player1.value = Player(i, name)
             playViewModel.fillHand(playViewModel.player1, playViewModel.deck)
         }
         else if (i == 2) {
-            viewModel.player2Name.value = name
-            playViewModel.player2.value = Player(i)
+            playViewModel.player2.value = Player(i, name)
             playViewModel.fillHand(playViewModel.player2, playViewModel.deck)
         }
         else if (i == 3) {
-            viewModel.player3Name.value = name
-            playViewModel.player3.value = Player(i)
+            playViewModel.player3.value = Player(i, name)
             playViewModel.fillHand(playViewModel.player3, playViewModel.deck)
         }
         else if (i == 4) {
-            viewModel.player4Name.value = name
-            playViewModel.player4.value = Player(i)
+            playViewModel.player4.value = Player(i, name)
             playViewModel.fillHand(playViewModel.player4, playViewModel.deck)
         }
         else if (i == 5) {
-            viewModel.player5Name.value = name
-            playViewModel.player5.value = Player(i)
+            playViewModel.player5.value = Player(i, name)
             playViewModel.fillHand(playViewModel.player5, playViewModel.deck)
         }
     }

@@ -18,13 +18,9 @@ import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 class ThreePlayerBoard : Fragment() {
 
-    lateinit var viewModel: GameSettingsViewModel
     lateinit var playViewModel: PlayViewModel
-    var player1Name: String = ""
     lateinit var player1: Player
-    var player2Name: String = ""
     lateinit var player2: Player
-    var player3Name: String = ""
     lateinit var player3: Player
     var numPlayers: Int = 0
     lateinit var board: Board
@@ -51,45 +47,47 @@ class ThreePlayerBoard : Fragment() {
         val buttonPlayer3 = view.findViewById<Button>(R.id.button_3p_p3)
 
         buttonPlayer1.setOnClickListener {
-            val bundle = bundleOf("playerName" to player1Name, "playerNum" to 1, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player1.playerName, "playerNum" to 1, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
         buttonPlayer2.setOnClickListener {
-            val bundle = bundleOf("playerName" to player2Name, "playerNum" to 2, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player2.playerName, "playerNum" to 2, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
         buttonPlayer3.setOnClickListener {
-            val bundle = bundleOf("playerName" to player3Name, "playerNum" to 3, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player3.playerName, "playerNum" to 3, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
-        viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
         playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
-        viewModel.numPlayers.observe(this, Observer { z ->
+        playViewModel.numPlayers.observe(this, Observer { z ->
             numPlayers = z
         })
-        viewModel.player1Name.observe(this, Observer { z ->
-            player1Name = z
-            buttonPlayer1.text = player1Name
-        })
-        viewModel.player2Name.observe(this, Observer { z ->
-            player2Name = z
-            buttonPlayer2.text = player2Name
-        })
-        viewModel.player3Name.observe(this, Observer { z ->
-            player3Name = z
-            buttonPlayer3.text = player3Name
-        })
+//        playViewModel.player1.observe(this, Observer { z ->
+//            player1Name = z
+//            buttonPlayer1.text = player1Name
+//        })
+//        viewModel.player2Name.observe(this, Observer { z ->
+//            player2Name = z
+//            buttonPlayer2.text = player2Name
+//        })
+//        viewModel.player3Name.observe(this, Observer { z ->
+//            player3Name = z
+//            buttonPlayer3.text = player3Name
+//        })
         playViewModel.player1.observe(this, Observer { z ->
             player1 = z
+            buttonPlayer1.text = player1.playerName
         })
         playViewModel.player2.observe(this, Observer { z ->
             player2 = z
+            buttonPlayer2.text = player2.playerName
         })
         playViewModel.player3.observe(this, Observer { z ->
             player3 = z
+            buttonPlayer3.text = player3.playerName
         })
 
 //        buttonPlayer1.drawableState.
