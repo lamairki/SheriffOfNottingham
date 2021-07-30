@@ -55,6 +55,14 @@ public class Player implements Serializable {
     }
 
     /**
+     * This method added to add cards to the players bags from their hand
+     */
+    public void addCardToBag(GoodsCard gc) {
+        playerBag.add(gc);
+        hand.remove(gc);
+    }
+
+    /**
      * This method is planned to be used when players take
      * from other players bags.
      * @param cardType

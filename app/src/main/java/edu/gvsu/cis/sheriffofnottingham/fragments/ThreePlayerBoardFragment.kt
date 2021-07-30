@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,12 +13,13 @@ import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.game.Board
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
-
+import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 
 class ThreePlayerBoard : Fragment() {
 
     lateinit var viewModel: GameSettingsViewModel
+    lateinit var playViewModel: PlayViewModel
     var player1Name: String = ""
     lateinit var player1: Player
     var player2Name: String = ""
@@ -51,21 +51,22 @@ class ThreePlayerBoard : Fragment() {
         val buttonPlayer3 = view.findViewById<Button>(R.id.button_3p_p3)
 
         buttonPlayer1.setOnClickListener {
-            val bundle = bundleOf("playerName" to player1Name, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player1Name, "playerNum" to 1, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
         buttonPlayer2.setOnClickListener {
-            val bundle = bundleOf("playerName" to player2Name, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player2Name, "playerNum" to 2, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
         buttonPlayer3.setOnClickListener {
-            val bundle = bundleOf("playerName" to player3Name, "numPlayers" to numPlayers)
+            val bundle = bundleOf("playerName" to player3Name, "playerNum" to 3, "numPlayers" to numPlayers)
             findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment, bundle)
         }
 
         viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
+        playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
         viewModel.numPlayers.observe(this, Observer { z ->
             numPlayers = z
         })
@@ -81,19 +82,19 @@ class ThreePlayerBoard : Fragment() {
             player3Name = z
             buttonPlayer3.text = player3Name
         })
-        viewModel.player1.observe(this, Observer { z ->
+        playViewModel.player1.observe(this, Observer { z ->
             player1 = z
         })
-        viewModel.player2.observe(this, Observer { z ->
+        playViewModel.player2.observe(this, Observer { z ->
             player2 = z
         })
-        viewModel.player3.observe(this, Observer { z ->
+        playViewModel.player3.observe(this, Observer { z ->
             player3 = z
         })
 
 //        buttonPlayer1.drawableState.
 
-        board = Board(3)
+//        board = Board(3)
 
     }
 

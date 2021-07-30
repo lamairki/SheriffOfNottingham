@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
+import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -24,6 +25,8 @@ class NumPlayerFragment : Fragment() {
     private var numPlayers = 3
 
 lateinit var viewModel: GameSettingsViewModel
+lateinit var playViewModel: PlayViewModel
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -49,6 +52,7 @@ lateinit var viewModel: GameSettingsViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(GameSettingsViewModel::class.java)
+        playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
 
         val spinner: Spinner = view.findViewById(R.id.num_player_dropdown)
 
@@ -66,6 +70,8 @@ lateinit var viewModel: GameSettingsViewModel
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
             viewModel.numPlayers.value = numPlayers
+            playViewModel.deck.value = Deck()
+            playViewModel.shuffleDeck()
             val bundle = bundleOf("playerNum" to 1)
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
 

@@ -1,19 +1,17 @@
 package edu.gvsu.cis.sheriffofnottingham
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import edu.gvsu.cis.sheriffofnottingham.cards.Deck
 import edu.gvsu.cis.sheriffofnottingham.models.GameSettingsViewModel
+import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 class MainActivity() : AppCompatActivity() {
 
     lateinit var viewModel: GameSettingsViewModel
+    lateinit var playViewModel: PlayViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +19,7 @@ class MainActivity() : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
         viewModel = ViewModelProvider(this).get(GameSettingsViewModel::class.java)
+        playViewModel = ViewModelProvider(this).get(PlayViewModel::class.java)
 
     }
 
