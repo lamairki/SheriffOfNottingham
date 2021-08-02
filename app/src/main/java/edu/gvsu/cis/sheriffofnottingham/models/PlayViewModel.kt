@@ -69,6 +69,17 @@ class PlayViewModel : ViewModel() {
         return null
     }
 
+    fun getPlayerBag(playerNum: Int): ArrayList<GoodsCard>? {
+        when (playerNum) {
+            1 -> return player1.value?.playerBag
+            2 -> return player2.value?.playerBag
+            3 -> return player3.value?.playerBag
+            4 -> return player4.value?.playerBag
+            5 -> return player5.value?.playerBag
+        }
+        return null
+    }
+
     fun addCardsToBag(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
         for (card in cardsToAdd) {
             p.value?.addCardToBag(card)
@@ -77,7 +88,7 @@ class PlayViewModel : ViewModel() {
 
     fun turnComplete(p: MutableLiveData<Player>) {
         // Determines player to follow player 1
-        if (p.value == player1) {
+        if (p.value == player1.value) {
             if (sheriff.value == player2)
                 currPlayer.value = player3
             else
@@ -85,7 +96,7 @@ class PlayViewModel : ViewModel() {
         }
 
         // Determines player to follow player 2
-        if (p.value == player2) {
+        if (p.value == player2.value) {
             if (numPlayers.value == 3)
                 if (sheriff.value == player3)
                     currPlayer.value = player1
@@ -99,7 +110,7 @@ class PlayViewModel : ViewModel() {
         }
 
         // Determines player to follow player 3
-        if (p.value == player3) {
+        if (p.value == player3.value) {
             if (numPlayers.value == 3)
                 if (sheriff.value == player1)
                     currPlayer.value = player2
@@ -118,7 +129,7 @@ class PlayViewModel : ViewModel() {
         }
 
         // Determines player to follow player 4
-        if (p.value == player4) {
+        if (p.value == player4.value) {
             if (numPlayers.value == 4)
                 if (sheriff.value == player1)
                     currPlayer.value = player2
@@ -132,7 +143,7 @@ class PlayViewModel : ViewModel() {
         }
 
         // Determines player to follow player 5
-        if (p.value == player5) {
+        if (p.value == player5.value) {
             if (sheriff.value == player1)
                 currPlayer.value = player2
             else
@@ -141,25 +152,25 @@ class PlayViewModel : ViewModel() {
     }
 
     fun newSheriff(s: MutableLiveData<Player>) {
-        if (s.value == player1) {
+        if (s.value == player1.value) {
             sheriff.value = player2
         }
-        if (s.value == player2) {
+        if (s.value == player2.value) {
             sheriff.value = player3
         }
-        if (s.value == player3) {
+        if (s.value == player3.value) {
             if (numPlayers.value == 3)
                 sheriff.value = player1
             else
                 sheriff.value = player4
         }
-        if (s.value == player4) {
+        if (s.value == player4.value) {
             if (numPlayers.value == 4)
                 sheriff.value = player1
             else
                 sheriff.value = player5
         }
-        if (s.value == player5) {
+        if (s.value == player5.value) {
             sheriff.value = player1
         }
     }

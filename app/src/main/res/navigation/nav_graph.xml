@@ -86,5 +86,16 @@
         <action
             android:id="@+id/action_playerHandFragment_to_FivePlayerBoardFragment"
             app:destination="@id/FivePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerHandFragment_to_playerBagFragment"
+            app:destination="@id/playerBagFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerBagFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerBagFragment"
+        android:label="PlayerBagFragment" >
+        <action
+            android:id="@+id/action_playerBagFragment_to_playerHandFragment"
+            app:destination="@id/playerHandFragment" />
     </fragment>
 </navigation>

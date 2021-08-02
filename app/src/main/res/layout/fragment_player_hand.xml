@@ -6,10 +6,10 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:screenOrientation="landscape"
-        tools:context=".ThreePlayerBoardFragment">
+        tools:context=".PlayerHandFragment">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/player_name"
+            android:id="@+id/player_name_hand"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/berkshire_swash"
@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_1"
+            android:id="@+id/card_1_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="4dp"
@@ -31,13 +31,13 @@
             android:textOn="Bag"
             android:textSize="30dp"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/card_2"
+            app:layout_constraintEnd_toStartOf="@id/card_2_hand"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_2"
+            android:id="@+id/card_2_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="5dp"
@@ -47,13 +47,13 @@
             android:textOn="Bag"
             android:textSize="30dp"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/card_3"
+            app:layout_constraintEnd_toStartOf="@id/card_3_hand"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/card_1"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintStart_toEndOf="@id/card_1_hand"
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_3"
+            android:id="@+id/card_3_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="5dp"
@@ -63,13 +63,13 @@
             android:textOn="Bag"
             android:textSize="30dp"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="@id/card_4"
+            app:layout_constraintEnd_toEndOf="@id/card_4_hand"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/card_2"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintStart_toEndOf="@id/card_2_hand"
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_4"
+            android:id="@+id/card_4_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="5dp"
@@ -79,13 +79,13 @@
             android:textOn="Bag"
             android:textSize="30dp"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/card_5"
+            app:layout_constraintEnd_toStartOf="@id/card_5_hand"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/card_3"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintStart_toEndOf="@id/card_3_hand"
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_5"
+            android:id="@+id/card_5_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="5dp"
@@ -95,13 +95,13 @@
             android:textOn="Bag"
             android:textSize="30dp"
             android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@id/card_6"
+            app:layout_constraintEnd_toStartOf="@id/card_6_hand"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/card_4"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintStart_toEndOf="@id/card_4_hand"
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/card_6"
+            android:id="@+id/card_6_hand"
             android:layout_width="0dp"
             android:layout_height="175dp"
             android:layout_marginTop="5dp"
@@ -113,11 +113,11 @@
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@id/card_5"
-            app:layout_constraintTop_toBottomOf="@id/player_name" />
+            app:layout_constraintStart_toEndOf="@id/card_5_hand"
+            app:layout_constraintTop_toBottomOf="@id/player_name_hand" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/return_button"
+            android:id="@+id/return_button_hand"
             android:layout_width="wrap_content"
             android:paddingHorizontal="10dp"
             android:layout_height="wrap_content"
@@ -128,11 +128,11 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/in_bag_button"
-            app:layout_constraintTop_toBottomOf="@id/card_3" />
+            app:layout_constraintStart_toEndOf="@id/in_bag_button_hand"
+            app:layout_constraintTop_toBottomOf="@id/card_3_hand" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/in_bag_button"
+            android:id="@+id/in_bag_button_hand"
             android:layout_width="wrap_content"
             android:paddingHorizontal="10dp"
             android:layout_height="wrap_content"
@@ -142,9 +142,9 @@
             android:background="@color/green"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/return_button"
+            app:layout_constraintEnd_toStartOf="@id/return_button_hand"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/card_3" />
+            app:layout_constraintTop_toBottomOf="@id/card_3_hand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

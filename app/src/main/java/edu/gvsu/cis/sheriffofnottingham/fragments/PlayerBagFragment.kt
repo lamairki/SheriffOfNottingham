@@ -1,6 +1,7 @@
 package edu.gvsu.cis.sheriffofnottingham.fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,6 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,22 +17,16 @@ import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
-import java.util.*
+import java.util.ArrayList
 
-lateinit var playViewModel: PlayViewModel
+lateinit var playViewModelBag: PlayViewModel
 private const val BAG_MAX = 5
 private const val BAG_MIN = 1
-lateinit var player: MutableLiveData<Player>
-//var playerName: String = ""
-var numPlayers: Int = 0
-//var playerNum = 0
-var bagCards = 0
+lateinit var playerBag: MutableLiveData<Player>
+var numPlayersBag: Int = 0
+var cardsInBag = 0
 
-lateinit var hand: ArrayList<GoodsCard>
-
-
-
-class PlayerHandFragment : Fragment() {
+class PlayerBagFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,72 +35,60 @@ class PlayerHandFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_hand, container, false)
+        return inflater.inflate(R.layout.fragment_player_bag, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
+        playViewModelBag = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
 
-        numPlayers = playViewModel.numPlayers.value!!
+        numPlayersBag = playViewModelBag.numPlayers.value!!
 
-        player = playViewModel.currPlayer.value!!
+        playerBag = playViewModelBag.currPlayer.value!!
 
 
-        val card_1_hand = view.findViewById<ToggleButton>(R.id.card_1_hand)
-        val card_2_hand = view.findViewById<ToggleButton>(R.id.card_2_hand)
-        val card_3_hand = view.findViewById<ToggleButton>(R.id.card_3_hand)
-        val card_4_hand = view.findViewById<ToggleButton>(R.id.card_4_hand)
-        val card_5_hand = view.findViewById<ToggleButton>(R.id.card_5_hand)
-        val card_6_hand = view.findViewById<ToggleButton>(R.id.card_6_hand)
+        val card_1_bag = view.findViewById<ToggleButton>(R.id.card_1_bag)
+        val card_2_bag = view.findViewById<ToggleButton>(R.id.card_2_bag)
+        val card_3_bag = view.findViewById<ToggleButton>(R.id.card_3_bag)
+        val card_4_bag = view.findViewById<ToggleButton>(R.id.card_4_bag)
+        val card_5_bag = view.findViewById<ToggleButton>(R.id.card_5_bag)
+        val card_6_bag = view.findViewById<ToggleButton>(R.id.card_6_bag)
 
-        val cards = arrayOf(card_1_hand, card_2_hand, card_3_hand, card_4_hand, card_5_hand, card_6_hand)
+        val cards = arrayOf(card_1_bag, card_2_bag, card_3_bag, card_4_bag, card_5_bag, card_6_bag)
 
-        val nameTextView = view.findViewById<TextView>(R.id.player_name_hand)
-        nameTextView.setText(player.value?.playerName.toString())
+        val nameTextView = view.findViewById<TextView>(R.id.player_name_bag)
+        nameTextView.setText(playerBag.value?.playerName.toString())
 
-        view.findViewById<Button>(R.id.return_button_hand).setOnClickListener {
-            if(numPlayers == 3) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_threePlayerBoardFragment)
-            }
-            if(numPlayers == 4) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_fourPlayerBoard)
-            }
-            if(numPlayersBag == 5) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_FivePlayerBoardFragment)
-            }
+        view.findViewById<Button>(R.id.return_button_bag).setOnClickListener {
+            findNavController().navigate(R.id.action_playerBagFragment_to_playerHandFragment)
         }
 
-        view.findViewById<Button>(R.id.in_bag_button_hand).setOnClickListener {
+        view.findViewById<Button>(R.id.in_bag_button_bag).setOnClickListener {
             var cardsToBag: ArrayList<GoodsCard> = ArrayList<GoodsCard>()
             for (i in 0..(hand.size-1)) {
                 if (cards.get(i).isChecked)
                     cardsToBag.add(hand.get(i))
             }
-            when (player.value?.playerNum) {
-                1 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player1)
-                2 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player2)
-                3 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player3)
+            when (playerBag.value?.playerNum) {
+                1 -> playViewModelBag.addCardsToBag(cardsToBag, playViewModelBag.player1)
+                2 -> playViewModelBag.addCardsToBag(cardsToBag, playViewModelBag.player2)
+                3 -> playViewModelBag.addCardsToBag(cardsToBag, playViewModelBag.player3)
             }
 
-            when (player.value?.playerNum) {
-                1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
-                2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
-                3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
+            when (playerBag.value?.playerNum) {
+                1 -> hand = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
+                2 -> hand = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
+                3 -> hand = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
-            findNavController().navigate(R.id.action_playerHandFragment_to_playerBagFragment)
         }
         setupCardListeners(cards)
 
-        when (player.value?.playerNum) {
-            1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
-            2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
-            3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
+        when (playerBag.value?.playerNum) {
+            1 -> hand = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
+            2 -> hand = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
+            3 -> hand = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }
@@ -114,18 +96,18 @@ class PlayerHandFragment : Fragment() {
     private fun setupCardListeners(cards: Array<ToggleButton>) {
         for (i in cards) {
             i.setOnCheckedChangeListener { _, isChecked ->
-                if (bagCards >= BAG_MAX) {
+                if (cardsInBag >= BAG_MAX) {
                     if (isChecked) {
                         i.setChecked(false)
-                        bagCards = BAG_MAX
+                        cardsInBag = BAG_MAX
                     } else {
-                        bagCards--
+                        cardsInBag--
                     }
                 } else {
                     if (isChecked) {
-                        bagCards++
+                        cardsInBag++
                     } else {
-                        bagCards--
+                        cardsInBag--
                     }
                 }
             }

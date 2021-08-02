@@ -63,6 +63,8 @@ public class Player implements Serializable {
         return this.hand;
     }
 
+    public ArrayList<GoodsCard> getPlayerBag() { return this.playerBag; }
+
     /**
      * This method takes the entire contents of the bag and
      * adds them to their market.
