@@ -38,4 +38,16 @@ public class Discard {
             throw new ArrayIndexOutOfBoundsException();
         }
     }
+
+    /**
+     * Places the players temporary discard pile on top of the collective discard pile
+     * Assuming that the top of the pile is the last element of the array
+     * @param tempDiscardPile
+     */
+    public void placeOnDiscardPile(ArrayList<GoodsCard> tempDiscardPile){
+        goods.addAll(tempDiscardPile);
+
+        }
+    }
+
 }

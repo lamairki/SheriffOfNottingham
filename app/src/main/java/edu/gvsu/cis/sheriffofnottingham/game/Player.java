@@ -66,6 +66,10 @@ public class Player implements Serializable {
         return this.hand;
     }
 
+    public int getHandSize(){
+        return this.HAND_SIZE;
+    }
+
     public ArrayList<GoodsCard> getPlayerBag() { return this.playerBag; }
 
     /**
