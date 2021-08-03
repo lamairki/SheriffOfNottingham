@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:screenOrientation="landscape"
-    tools:context=".PlayerBagFragment">
+    tools:context=".DiscardFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/player_name_bag"
+        android:id="@+id/player_name_discard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_1_bag"
+        android:id="@+id/card_1_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="4dp"
@@ -31,13 +31,13 @@
         android:textOn="Remove"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_2_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_2_discard"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_2_bag"
+        android:id="@+id/card_2_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -47,13 +47,13 @@
         android:textOn="Remove"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_3_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_3_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_1_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_1_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_3_bag"
+        android:id="@+id/card_3_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -63,13 +63,13 @@
         android:textOn="Remove"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/card_4_bag"
+        app:layout_constraintEnd_toEndOf="@id/card_4_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_2_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_2_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_4_bag"
+        android:id="@+id/card_4_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -79,13 +79,13 @@
         android:textOn="Remove"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_5_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_5_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_3_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_3_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_5_bag"
+        android:id="@+id/card_5_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -95,13 +95,13 @@
         android:textOn="Remove"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_6_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_6_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_4_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_4_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_6_bag"
+        android:id="@+id/card_6_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
@@ -113,11 +113,11 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_5_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_5_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_discard" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_back_to_hand"
+        android:id="@+id/button_back_to_discard_hand"
         android:layout_width="wrap_content"
         android:paddingHorizontal="10dp"
         android:layout_height="wrap_content"
@@ -128,23 +128,23 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/remove_from_bag"
-        app:layout_constraintTop_toBottomOf="@id/card_3_bag" />
+        app:layout_constraintStart_toEndOf="@id/remove_from_discard"
+        app:layout_constraintTop_toBottomOf="@id/card_3_discard" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/remove_from_bag"
+        android:id="@+id/remove_from_discard"
         android:layout_width="wrap_content"
         android:paddingHorizontal="10dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
         android:textSize="35sp"
-        android:text="@string/out_of_bag"
+        android:text="@string/remove_discard"
         android:background="@color/green"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_back_to_hand"
+        app:layout_constraintEnd_toStartOf="@id/button_back_to_discard_hand"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_3_bag" />
+        app:layout_constraintTop_toBottomOf="@id/card_3_discard" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

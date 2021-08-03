@@ -87,6 +87,30 @@ public class Player implements Serializable {
     }
 
     /**
+     * This method added to add cards to the players hand from their bag
+     */
+    public void addCardToHand(GoodsCard gc) {
+        this.hand.add(gc);
+        this.playerBag.remove(gc);
+    }
+
+    /**
+     * This method added to add cards to the players temp discard from their hand
+     */
+    public void addCardToTempDiscard(GoodsCard gc) {
+        this.tempDiscard.add(gc);
+        this.hand.remove(gc);
+    }
+
+    /**
+     * This method added to add cards to the players temp discard from their hand
+     */
+    public void removeCardFromTempDiscard(GoodsCard gc) {
+        this.hand.add(gc);
+        this.tempDiscard.remove(gc);
+    }
+
+    /**
      * This method is planned to be used when players take
      * from other players bags.
      * @param cardType

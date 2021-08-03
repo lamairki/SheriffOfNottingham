@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
+import edu.gvsu.cis.sheriffofnottingham.game.GamePhase
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
@@ -55,16 +56,19 @@ class SetupFragment : Fragment() {
                 if (numPlayers == 3) {
                     playViewModel.sheriff.value = playViewModel.player1
                     playViewModel.currPlayer.value = playViewModel.player2
+                    playViewModel.gamePhase.value = GamePhase.MARKET
                     findNavController().navigate(R.id.action_SetupFragment_to_ThreePlayerBoardFragment)
                 }
                 if (numPlayers == 4) {
                     playViewModel.sheriff.value = playViewModel.player1
                     playViewModel.currPlayer.value = playViewModel.player2
+                    playViewModel.gamePhase.value = GamePhase.MARKET
                     findNavController().navigate(R.id.action_SetupFragment_to_fourPlayerBoard)
                 }
                 if (numPlayers == 5) {
                     playViewModel.sheriff.value = playViewModel.player1
                     playViewModel.currPlayer.value = playViewModel.player2
+                    playViewModel.gamePhase.value = GamePhase.MARKET
                     findNavController().navigate(R.id.action_SetupFragment_to_FivePlayerBoardFragment)
                 }
             }

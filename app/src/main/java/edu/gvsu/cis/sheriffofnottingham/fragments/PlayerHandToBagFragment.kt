@@ -23,16 +23,13 @@ lateinit var playViewModel: PlayViewModel
 private const val BAG_MAX = 5
 private const val BAG_MIN = 1
 lateinit var player: MutableLiveData<Player>
-//var playerName: String = ""
 var numPlayers: Int = 0
-//var playerNum = 0
 var bagCards = 0
-
 lateinit var hand: ArrayList<GoodsCard>
 
 
 
-class PlayerHandFragment : Fragment() {
+class PlayerHandToBagFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,7 +38,7 @@ class PlayerHandFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_hand, container, false)
+        return inflater.inflate(R.layout.fragment_player_hand_to_bag, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,31 +51,20 @@ class PlayerHandFragment : Fragment() {
         player = playViewModel.currPlayer.value!!
 
 
-        val card_1_hand = view.findViewById<ToggleButton>(R.id.card_1_hand)
-        val card_2_hand = view.findViewById<ToggleButton>(R.id.card_2_hand)
-        val card_3_hand = view.findViewById<ToggleButton>(R.id.card_3_hand)
-        val card_4_hand = view.findViewById<ToggleButton>(R.id.card_4_hand)
-        val card_5_hand = view.findViewById<ToggleButton>(R.id.card_5_hand)
-        val card_6_hand = view.findViewById<ToggleButton>(R.id.card_6_hand)
+        val card_1_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_1_hand)
+        val card_2_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_2_hand)
+        val card_3_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_3_hand)
+        val card_4_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_4_hand)
+        val card_5_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_5_hand)
+        val card_6_hand_to_bag = view.findViewById<ToggleButton>(R.id.card_6_hand)
 
-        val cards = arrayOf(card_1_hand, card_2_hand, card_3_hand, card_4_hand, card_5_hand, card_6_hand)
+        val cards = arrayOf(card_1_hand_to_bag, card_2_hand_to_bag, card_3_hand_to_bag, card_4_hand_to_bag, card_5_hand_to_bag, card_6_hand_to_bag)
 
         val nameTextView = view.findViewById<TextView>(R.id.player_name_hand)
         nameTextView.setText(player.value?.playerName.toString())
 
         view.findViewById<Button>(R.id.return_button_hand).setOnClickListener {
-            if(numPlayers == 3) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_threePlayerBoardFragment)
-            }
-            if(numPlayers == 4) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_fourPlayerBoard)
-            }
-            if(numPlayersBag == 5) {
-                playViewModel.turnComplete(player)
-                findNavController().navigate(R.id.action_playerHandFragment_to_FivePlayerBoardFragment)
-            }
+            findNavController().navigate(R.id.action_playerHandFragment_to_playerStandFragment)
         }
 
         view.findViewById<Button>(R.id.in_bag_button_hand).setOnClickListener {
@@ -101,6 +87,7 @@ class PlayerHandFragment : Fragment() {
             refreshCards(cards)
             findNavController().navigate(R.id.action_playerHandFragment_to_playerBagFragment)
         }
+
         setupCardListeners(cards)
 
         when (player.value?.playerNum) {
@@ -145,6 +132,7 @@ class PlayerHandFragment : Fragment() {
                     GoodsType.SILK -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
                     GoodsType.MEAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
                     GoodsType.PEPPER -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+                    null -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.color.transparent))
                 }
             }
             else {

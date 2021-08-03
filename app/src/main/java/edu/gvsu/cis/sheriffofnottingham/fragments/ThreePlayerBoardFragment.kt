@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.os.bundleOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.game.Board
+import edu.gvsu.cis.sheriffofnottingham.game.GamePhase
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
@@ -25,6 +25,7 @@ class ThreePlayerBoard : Fragment() {
     lateinit var player3: Player
     var numPlayers: Int = 0
     lateinit var board: Board
+    lateinit var currGamePhase: GamePhase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,7 @@ class ThreePlayerBoard : Fragment() {
         val buttonPlayer1 = view.findViewById<Button>(R.id.button_3p_p1)
         val buttonPlayer2 = view.findViewById<Button>(R.id.button_3p_p2)
         val buttonPlayer3 = view.findViewById<Button>(R.id.button_3p_p3)
+        val buttonPhaseComplete = view.findViewById<Button>(R.id.phase_complete)
 
         playViewModel.numPlayers.observe(this, Observer { z ->
             numPlayers = z
@@ -80,19 +82,31 @@ class ThreePlayerBoard : Fragment() {
             }
         })
 
+        playViewModel.gamePhase.observe(this, Observer { z ->
+            currGamePhase = z
+            when (currGamePhase) {
+                GamePhase.MARKET -> buttonPhaseComplete.text = "Phase 'MARKET' Complete"
+                GamePhase.LOAD_BAG -> buttonPhaseComplete.text = "Phase 'LOAD BAG' Complete"
+                GamePhase.DECLARATION -> buttonPhaseComplete.text = "Phase 'DECLARATION' Complete"
+                GamePhase.INSPECTION -> buttonPhaseComplete.text = "Phase 'INSPECTION' Complete"
+                GamePhase.ENF_OF_ROUND -> buttonPhaseComplete.text = "Phase 'END OF ROUND' Complete"
+            }
+        })
+
         buttonPlayer1.setOnClickListener {
-//            val bundle = bundleOf("playerName" to player1.playerName, "playerNum" to 1, "numPlayers" to numPlayers)
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment)
+            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
         }
 
         buttonPlayer2.setOnClickListener {
-//            val bundle = bundleOf("playerName" to player2.playerName, "playerNum" to 2, "numPlayers" to numPlayers)
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment)
+            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
         }
 
         buttonPlayer3.setOnClickListener {
-//            val bundle = bundleOf("playerName" to player3.playerName, "playerNum" to 3, "numPlayers" to numPlayers)
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerHandFragment)
+            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
+        }
+
+        buttonPhaseComplete.setOnClickListener {
+            playViewModel.nextPhase()
         }
 
     }

@@ -84,9 +84,38 @@ class PlayViewModel : ViewModel() {
         return null
     }
 
+    fun getPlayerTempDiscard(playerNum: Int): ArrayList<GoodsCard>? {
+        when (playerNum) {
+            1 -> return player1.value?.tempDiscard
+            2 -> return player2.value?.tempDiscard
+            3 -> return player3.value?.tempDiscard
+            4 -> return player4.value?.tempDiscard
+            5 -> return player5.value?.tempDiscard
+        }
+        return null
+    }
+
     fun addCardsToBag(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
         for (card in cardsToAdd) {
             p.value?.addCardToBag(card)
+        }
+    }
+
+    fun addCardsToHand(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
+        for (card in cardsToAdd) {
+            p.value?.addCardToHand(card)
+        }
+    }
+
+    fun addCardsToTempDiscard(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
+        for (card in cardsToAdd) {
+            p.value?.addCardToTempDiscard(card)
+        }
+    }
+
+    fun removeCardsFromTempDiscard(cardsToAdd: ArrayList<GoodsCard>, p: MutableLiveData<Player>) {
+        for (card in cardsToAdd) {
+            p.value?.removeCardFromTempDiscard(card)
         }
     }
 
@@ -161,31 +190,55 @@ class PlayViewModel : ViewModel() {
             GamePhase.LOAD_BAG -> gamePhase.value = GamePhase.DECLARATION
             GamePhase.DECLARATION -> gamePhase.value = GamePhase.INSPECTION
             GamePhase.INSPECTION -> gamePhase.value = GamePhase.ENF_OF_ROUND
-            GamePhase.ENF_OF_ROUND -> gamePhase.value = GamePhase.MARKET
+            GamePhase.ENF_OF_ROUND -> {
+                gamePhase.value = GamePhase.MARKET
+                newSheriff(sheriff.value)
+            }
         }
     }
 
-    fun newSheriff(s: MutableLiveData<Player>) {
-        if (s.value == player1.value) {
+    fun newSheriff(s: MutableLiveData<Player>?) {
+        if (s?.value == player1.value) {
             sheriff.value = player2
+            currPlayer.value = player3
         }
-        if (s.value == player2.value) {
-            sheriff.value = player3
+        if (s?.value == player2.value) {
+            if (numPlayers.value == 3) {
+                sheriff.value = player3
+                currPlayer.value = player1
+            }
+            else {
+                sheriff.value = player3
+                currPlayer.value = player4
+            }
         }
-        if (s.value == player3.value) {
-            if (numPlayers.value == 3)
+        if (s?.value == player3.value) {
+            if (numPlayers.value == 3) {
                 sheriff.value = player1
-            else
+                currPlayer.value = player2
+            }
+            else if (numPlayers.value == 4){
                 sheriff.value = player4
+                currPlayer.value = player1
+            }
+            else {
+                sheriff.value = player4
+                currPlayer.value = player5
+            }
         }
-        if (s.value == player4.value) {
-            if (numPlayers.value == 4)
+        if (s?.value == player4.value) {
+            if (numPlayers.value == 4) {
                 sheriff.value = player1
-            else
+                currPlayer.value = player2
+            }
+            else {
                 sheriff.value = player5
+                currPlayer.value = player1
+            }
         }
-        if (s.value == player5.value) {
+        if (s?.value == player5.value) {
             sheriff.value = player1
+            currPlayer.value = player2
         }
     }
 }

@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:screenOrientation="landscape"
-    tools:context=".PlayerBagFragment">
+    tools:context=".PlayerHandToDiscardFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/player_name_bag"
+        android:id="@+id/player_name_hand_to_discard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
@@ -21,131 +21,129 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_1_bag"
+        android:id="@+id/card_1_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_2_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_2_hand_to_discard"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_2_bag"
+        android:id="@+id/card_2_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_3_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_3_hand_to_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_1_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_1_hand_to_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_3_bag"
+        android:id="@+id/card_3_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/card_4_bag"
+        app:layout_constraintEnd_toEndOf="@id/card_4_hand_to_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_2_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_2_hand_to_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_4_bag"
+        android:id="@+id/card_4_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_5_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_5_hand_to_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_3_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_3_hand_to_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_5_bag"
+        android:id="@+id/card_5_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@id/card_6_bag"
+        app:layout_constraintEnd_toStartOf="@id/card_6_hand_to_discard"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_4_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_4_hand_to_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/card_6_bag"
+        android:id="@+id/card_6_hand_to_discard"
         android:layout_width="0dp"
         android:layout_height="175dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/legal_goods_apples"
         android:text=""
         android:textOff=""
-        android:textOn="Remove"
+        android:textOn="Discard"
         android:textSize="25dp"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@id/card_5_bag"
-        app:layout_constraintTop_toBottomOf="@id/player_name_bag" />
+        app:layout_constraintStart_toEndOf="@id/card_5_hand_to_discard"
+        app:layout_constraintTop_toBottomOf="@id/player_name_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_back_to_hand"
+        android:id="@+id/return_button_hand_to_discard"
         android:layout_width="wrap_content"
         android:paddingHorizontal="10dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
         android:textSize="35sp"
-        android:text="@string/go_to_hand"
+        android:text="@string/return_label"
         android:background="@color/green"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/remove_from_bag"
-        app:layout_constraintTop_toBottomOf="@id/card_3_bag" />
+        app:layout_constraintStart_toEndOf="@id/discard_button"
+        app:layout_constraintTop_toBottomOf="@id/card_3_hand_to_discard" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/remove_from_bag"
+        android:id="@+id/discard_button"
         android:layout_width="wrap_content"
         android:paddingHorizontal="10dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/berkshire_swash"
         android:textSize="35sp"
-        android:text="@string/out_of_bag"
+        android:text="@string/discard"
         android:background="@color/green"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/button_back_to_hand"
+        app:layout_constraintEnd_toStartOf="@id/return_button_hand_to_discard"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_3_bag" />
-
+        app:layout_constraintTop_toBottomOf="@id/card_3_hand_to_discard" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-

@@ -19,15 +19,16 @@ import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 import java.util.ArrayList
 
-lateinit var playViewModelBag: PlayViewModel
+lateinit var playViewModelDiscard: PlayViewModel
 private const val BAG_MAX = 5
 private const val BAG_MIN = 1
-lateinit var playerBag: MutableLiveData<Player>
-var numPlayersBag: Int = 0
-var numCardsInBag = 0
-lateinit var cardsInBag: ArrayList<GoodsCard>
+lateinit var playerDiscard: MutableLiveData<Player>
+var numPlayersDiscard: Int = 0
+var numCardsInDiscard = 0
+lateinit var cardsInDiscard: ArrayList<GoodsCard>
 
-class PlayerBagFragment : Fragment() {
+
+class DiscardFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,61 +37,61 @@ class PlayerBagFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_player_bag, container, false)
+        return inflater.inflate(R.layout.fragment_discard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        playViewModelBag = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
+        playViewModelDiscard = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
 
-        numPlayersBag = playViewModelBag.numPlayers.value!!
+        numPlayersDiscard = playViewModelHandDiscard.numPlayers.value!!
 
-        playerBag = playViewModelBag.currPlayer.value!!
+        playerDiscard = playViewModelHandDiscard.currPlayer.value!!
 
 
-        val card_1_bag = view.findViewById<ToggleButton>(R.id.card_1_bag)
-        val card_2_bag = view.findViewById<ToggleButton>(R.id.card_2_bag)
-        val card_3_bag = view.findViewById<ToggleButton>(R.id.card_3_bag)
-        val card_4_bag = view.findViewById<ToggleButton>(R.id.card_4_bag)
-        val card_5_bag = view.findViewById<ToggleButton>(R.id.card_5_bag)
-        val card_6_bag = view.findViewById<ToggleButton>(R.id.card_6_bag)
+        val card_1_discard = view.findViewById<ToggleButton>(R.id.card_1_discard)
+        val card_2_discard = view.findViewById<ToggleButton>(R.id.card_2_discard)
+        val card_3_discard = view.findViewById<ToggleButton>(R.id.card_3_discard)
+        val card_4_discard = view.findViewById<ToggleButton>(R.id.card_4_discard)
+        val card_5_discard = view.findViewById<ToggleButton>(R.id.card_5_discard)
+        val card_6_discard = view.findViewById<ToggleButton>(R.id.card_6_discard)
 
-        val cards = arrayOf(card_1_bag, card_2_bag, card_3_bag, card_4_bag, card_5_bag, card_6_bag)
+        val cards = arrayOf(card_1_discard, card_2_discard, card_3_discard, card_4_discard, card_5_discard, card_6_discard)
 
-        val nameTextView = view.findViewById<TextView>(R.id.player_name_bag)
-        nameTextView.setText(playerBag.value?.playerName.toString())
+        val nameTextView = view.findViewById<TextView>(R.id.player_name_discard)
+        nameTextView.setText(playerDiscard.value?.playerName.toString())
 
-        view.findViewById<Button>(R.id.button_back_to_hand).setOnClickListener {
-            findNavController().navigate(R.id.action_playerBagFragment_to_playerHandFragment)
+        view.findViewById<Button>(R.id.button_back_to_discard_hand).setOnClickListener {
+            findNavController().navigate(R.id.action_discardFragment_to_playerHandToDiscardFragment)
         }
 
-        view.findViewById<Button>(R.id.remove_from_bag).setOnClickListener {
-            var cardsToBag: ArrayList<GoodsCard> = ArrayList<GoodsCard>()
-            for (i in 0..(cardsInBag.size-1)) {
+        view.findViewById<Button>(R.id.remove_from_discard).setOnClickListener {
+            var cardsToRemove: ArrayList<GoodsCard> = ArrayList<GoodsCard>()
+            for (i in 0..(cardsInDiscard.size-1)) {
                 if (cards.get(i).isChecked)
-                    cardsToBag.add(cardsInBag.get(i))
+                    cardsToRemove.add(cardsInDiscard.get(i))
             }
-            when (playerBag.value?.playerNum) {
-                1 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player1)
-                2 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player2)
-                3 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player3)
+            when (playerDiscard.value?.playerNum) {
+                1 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player1)
+                2 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player2)
+                3 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player3)
             }
 
-            when (playerBag.value?.playerNum) {
-                1 -> cardsInBag = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
-                2 -> cardsInBag = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
-                3 -> cardsInBag = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
+            when (playerDiscard.value?.playerNum) {
+                1 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(1) as ArrayList<GoodsCard>
+                2 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(2) as ArrayList<GoodsCard>
+                3 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(3) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
         }
 
         setupCardListeners(cards)
 
-        when (playerBag.value?.playerNum) {
-            1 -> cardsInBag = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
-            2 -> cardsInBag = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
-            3 -> cardsInBag = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
+        when (playerDiscard.value?.playerNum) {
+            1 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(1) as ArrayList<GoodsCard>
+            2 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(2) as ArrayList<GoodsCard>
+            3 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(3) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }
@@ -119,8 +120,8 @@ class PlayerBagFragment : Fragment() {
     private fun refreshCards(cards: Array<ToggleButton>) {
         var c: Int = 0
         for (i in cards) {
-            if (c < cardsInBag.size) {
-                when (cardsInBag.get(c).type) {
+            if (c < cardsInDiscard.size) {
+                when (cardsInDiscard.get(c).type) {
                     GoodsType.CHICKENS -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_chicken))
                     GoodsType.BREAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_bread))
                     GoodsType.CHEESE -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.legal_goods_cheese))

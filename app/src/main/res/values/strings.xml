@@ -21,6 +21,17 @@
 
     <string name="return_label">Return</string>
     <string name="in_bag">Add to Bag</string>
+    <string name="out_of_bag">Remove From Bag</string>
+
+    <string name="go_to_bag">Go to Bag</string>
+    <string name="go_to_hand">Go to Hand</string>
+    <string name="go_to_stand">Go to Stand</string>
+
+    <string name="discard">Set Aside for Discard</string>
+    <string name="remove_discard">Remove From Discard</string>
+
+    <string name="phase_complete">Phase ? Complete</string>
+
 
     <string-array name="player_selection">
         <item>3 PLAYERS</item>

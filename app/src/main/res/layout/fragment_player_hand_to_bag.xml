@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:screenOrientation="landscape"
-        tools:context=".PlayerHandFragment">
+        tools:context=".PlayerHandToBagFragment">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/player_name_hand"
