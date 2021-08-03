@@ -21,6 +21,7 @@ public class Player implements Serializable {
     private ArrayList<GoodsCard> hand = new ArrayList<>(HAND_SIZE);
     private ArrayList<GoodsCard> market = new ArrayList<>();
     private ArrayList<GoodsCard> playerBag = new ArrayList<>();
+    private ArrayList<GoodsCard> tempDiscard = new ArrayList<>();
     private boolean sheriff;
     private final int playerNum;
     private int gold;
@@ -47,6 +48,8 @@ public class Player implements Serializable {
      * Getter for player number
      */
     public int getPlayerNum() { return playerNum; }
+
+    public ArrayList<GoodsCard> getTempDiscard() { return tempDiscard; }
 
     /**
      * This method fills the rest of the cards in their hand

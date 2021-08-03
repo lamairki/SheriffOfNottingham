@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
+import edu.gvsu.cis.sheriffofnottingham.game.GamePhase
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import java.util.*
 
@@ -18,6 +19,7 @@ class PlayViewModel : ViewModel() {
     private var _player4 = MutableLiveData<Player>()
     private var _player5 = MutableLiveData<Player>()
     private var _deck = MutableLiveData<Deck>()
+    private var _gamePhase = MutableLiveData<GamePhase>()
 
 
     val currPlayer
@@ -38,6 +40,8 @@ class PlayViewModel : ViewModel() {
         get() = _player5
     val deck
         get() = _deck
+    val gamePhase
+        get() = _gamePhase
 
 
     /**
@@ -148,6 +152,16 @@ class PlayViewModel : ViewModel() {
                 currPlayer.value = player2
             else
                 currPlayer.value = player1
+        }
+    }
+
+    fun nextPhase() {
+        when (gamePhase.value) {
+            GamePhase.MARKET -> gamePhase.value = GamePhase.LOAD_BAG
+            GamePhase.LOAD_BAG -> gamePhase.value = GamePhase.DECLARATION
+            GamePhase.DECLARATION -> gamePhase.value = GamePhase.INSPECTION
+            GamePhase.INSPECTION -> gamePhase.value = GamePhase.ENF_OF_ROUND
+            GamePhase.ENF_OF_ROUND -> gamePhase.value = GamePhase.MARKET
         }
     }
 
