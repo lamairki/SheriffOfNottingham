@@ -4,6 +4,7 @@ import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
+import edu.gvsu.cis.sheriffofnottingham.cards.Discard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
 import edu.gvsu.cis.sheriffofnottingham.game.GamePhase
 import edu.gvsu.cis.sheriffofnottingham.game.Player
@@ -19,6 +20,7 @@ class PlayViewModel : ViewModel() {
     private var _player4 = MutableLiveData<Player>()
     private var _player5 = MutableLiveData<Player>()
     private var _deck = MutableLiveData<Deck>()
+    private var _discardStack = MutableLiveData<Discard>()
     private var _gamePhase = MutableLiveData<GamePhase>()
 
 
@@ -42,6 +44,8 @@ class PlayViewModel : ViewModel() {
         get() = _deck
     val gamePhase
         get() = _gamePhase
+    val discardStack
+        get() = _discardStack
 
 
     /**
@@ -117,6 +121,17 @@ class PlayViewModel : ViewModel() {
         for (card in cardsToAdd) {
             p.value?.removeCardFromTempDiscard(card)
         }
+    }
+
+    fun addCardsToDiscardStack(p: MutableLiveData<Player>, cardsToDiscard: ArrayList<GoodsCard>?, d: MutableLiveData<Discard>) {
+        d.value?.placeOnDiscardPile(cardsToDiscard)
+        p.value?.clearTempDiscard()
+    }
+
+    fun cardToHandFromDiscard(p: MutableLiveData<Player>) {
+        val cardToAdd: GoodsCard? = discardStack.value?.peekAtTop()
+        p.value?.hand?.add(cardToAdd)
+        discardStack.value?.removeFromTopOfStack()
     }
 
     fun turnComplete(p: MutableLiveData<Player>) {

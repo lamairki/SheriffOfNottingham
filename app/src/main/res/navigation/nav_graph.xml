@@ -119,8 +119,8 @@
         android:label="fragment_player_hand_to_discard"
         tools:layout="@layout/fragment_player_hand_to_discard" >
         <action
-            android:id="@+id/action_playerHandToDiscardFragment_to_playerStandFragment"
-            app:destination="@id/playerStandFragment" />
+            android:id="@+id/action_playerHandToDiscardFragment_to_deckFragment"
+            app:destination="@id/deckFragment" />
         <action
             android:id="@+id/action_playerHandToDiscardFragment_to_discardFragment"
             app:destination="@id/discardFragment" />
@@ -133,5 +133,14 @@
         <action
             android:id="@+id/action_discardFragment_to_playerHandToDiscardFragment"
             app:destination="@id/playerHandToDiscardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deckFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.DeckFragment"
+        android:label="fragment_deck"
+        tools:layout="@layout/fragment_deck" >
+        <action
+            android:id="@+id/action_deckFragment_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
     </fragment>
 </navigation>

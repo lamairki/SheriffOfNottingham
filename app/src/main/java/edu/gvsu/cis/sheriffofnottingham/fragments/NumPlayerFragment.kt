@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
+import edu.gvsu.cis.sheriffofnottingham.cards.Discard
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 /**
@@ -69,6 +70,7 @@ lateinit var playViewModel: PlayViewModel
             playViewModel.numPlayers.value = numPlayers
             playViewModel.deck.value = Deck()
             playViewModel.shuffleDeck()
+            playViewModel.discardStack.value = Discard(playViewModel.deck.value)
             val bundle = bundleOf("playerNum" to 1)
             findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
 

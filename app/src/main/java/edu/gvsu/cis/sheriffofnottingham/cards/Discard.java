@@ -7,10 +7,12 @@ public class Discard {
     /* This is the initial size of the discard pile */
     private static final int START_SIZE = 5;
     private ArrayList<GoodsCard> goods = new ArrayList<>(START_SIZE);
+    private int topOfDiscard = -1;
 
     public Discard(Deck d) {
         while(goods.size() < START_SIZE) {
             goods.add(d.drawCard());
+            topOfDiscard = topOfDiscard + 1;
         }
     }
 
@@ -25,8 +27,17 @@ public class Discard {
             throw new ArrayIndexOutOfBoundsException();
         }
         else {
-            return goods.get(index);
+            return this.goods.get(index);
         }
+    }
+
+    public GoodsCard peekAtTop() {
+        return this.goods.get(topOfDiscard);
+    }
+
+    public void removeFromTopOfStack() {
+        this.goods.remove(topOfDiscard);
+        topOfDiscard = topOfDiscard - 1;
     }
 
     public GoodsCard draw() {
@@ -45,9 +56,9 @@ public class Discard {
      * @param tempDiscardPile
      */
     public void placeOnDiscardPile(ArrayList<GoodsCard> tempDiscardPile){
-        goods.addAll(tempDiscardPile);
+        topOfDiscard = topOfDiscard + tempDiscardPile.size();
+        this.goods.addAll(tempDiscardPile);
 
         }
-    }
-
 }
+

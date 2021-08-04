@@ -15,7 +15,7 @@ import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType;
 
 public class Player implements Serializable {
 
-    private static final int HAND_SIZE = 5;
+    private static final int HAND_SIZE = 6;
     private static final int START_GOLD = 10;
     private String playerName = "";
     private ArrayList<GoodsCard> hand = new ArrayList<>(HAND_SIZE);
@@ -104,6 +104,13 @@ public class Player implements Serializable {
     public void addCardToTempDiscard(GoodsCard gc) {
         this.tempDiscard.add(gc);
         this.hand.remove(gc);
+    }
+
+    /**
+     * This method added to clear players temp discard stack when discarding cards
+     */
+    public void clearTempDiscard() {
+        this.tempDiscard.clear();
     }
 
     /**

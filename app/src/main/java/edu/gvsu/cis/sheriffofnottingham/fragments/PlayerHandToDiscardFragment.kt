@@ -65,7 +65,7 @@ class PlayerHandToDiscardFragment : Fragment() {
         nameTextView.setText(playerHandDiscard.value?.playerName.toString())
 
         view.findViewById<Button>(R.id.return_button_hand_to_discard).setOnClickListener {
-            findNavController().navigate(R.id.action_playerHandToDiscardFragment_to_playerStandFragment)
+            findNavController().navigate(R.id.action_playerHandToDiscardFragment_to_deckFragment)
         }
 
         view.findViewById<Button>(R.id.discard_button).setOnClickListener {
