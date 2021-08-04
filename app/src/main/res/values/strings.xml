@@ -37,6 +37,8 @@
     <string name="add_to_discard_stack">Add Your Cards to Discard</string>
     <string name="hand_size">Hand Size:</string>
     <string name="draw_label">Draw</string>
+    <string name="truth">Good Job!!</string>
+    <string name="lies">MWAHAHA!!!</string>
 
 
     <string-array name="player_selection">

@@ -20,6 +20,7 @@ class ThreePlayerBoard : Fragment() {
 
     lateinit var playViewModel: PlayViewModel
     lateinit var currPlayer: MutableLiveData<Player>
+    lateinit var sheriff: MutableLiveData<Player>
     lateinit var player1: Player
     lateinit var player2: Player
     lateinit var player3: Player
@@ -51,6 +52,9 @@ class ThreePlayerBoard : Fragment() {
         playViewModel.numPlayers.observe(this, Observer { z ->
             numPlayers = z
         })
+        playViewModel.sheriff.observe(this, Observer { z ->
+            sheriff = z
+        })
         playViewModel.player1.observe(this, Observer { z ->
             player1 = z
             buttonPlayer1.text = player1.playerName
@@ -63,25 +67,6 @@ class ThreePlayerBoard : Fragment() {
             player3 = z
             buttonPlayer3.text = player3.playerName
         })
-        playViewModel.currPlayer.observe(this, Observer { z ->
-            currPlayer = z
-            if (currPlayer.value?.playerNum == 1) {
-                buttonPlayer1.setEnabled(true)
-                buttonPlayer2.setEnabled(false)
-                buttonPlayer3.setEnabled(false)
-            }
-            else if (currPlayer.value?.playerNum == 2) {
-                buttonPlayer1.setEnabled(false)
-                buttonPlayer2.setEnabled(true)
-                buttonPlayer3.setEnabled(false)
-            }
-            else {
-                buttonPlayer1.setEnabled(false)
-                buttonPlayer2.setEnabled(false)
-                buttonPlayer3.setEnabled(true)
-            }
-        })
-
         playViewModel.gamePhase.observe(this, Observer { z ->
             currGamePhase = z
             when (currGamePhase) {
@@ -92,21 +77,73 @@ class ThreePlayerBoard : Fragment() {
                 GamePhase.ENF_OF_ROUND -> buttonPhaseComplete.text = "Phase 'END OF ROUND' Complete"
             }
         })
+        playViewModel.currPlayer.observe(this, Observer { z ->
+            currPlayer = z
+            if (currGamePhase != GamePhase.INSPECTION) {
+                if (currPlayer.value?.playerNum == 1) {
+                    buttonPlayer1.setEnabled(true)
+                    buttonPlayer2.setEnabled(false)
+                    buttonPlayer3.setEnabled(false)
+                } else if (currPlayer.value?.playerNum == 2) {
+                    buttonPlayer1.setEnabled(false)
+                    buttonPlayer2.setEnabled(true)
+                    buttonPlayer3.setEnabled(false)
+                } else {
+                    buttonPlayer1.setEnabled(false)
+                    buttonPlayer2.setEnabled(false)
+                    buttonPlayer3.setEnabled(true)
+                }
+            }
+        })
+
+
 
         buttonPlayer1.setOnClickListener {
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
+            if (currGamePhase == GamePhase.INSPECTION) {
+                playViewModel.currPlayer.value = playViewModel.player1
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+            }
+            else
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
         }
 
         buttonPlayer2.setOnClickListener {
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
+            if (currGamePhase == GamePhase.INSPECTION) {
+                playViewModel.currPlayer.value = playViewModel.player2
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+            }
+            else
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
         }
 
         buttonPlayer3.setOnClickListener {
-            findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
+            if (currGamePhase == GamePhase.INSPECTION) {
+                playViewModel.currPlayer.value = playViewModel.player3
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+            }
+            else
+                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerStandFragment)
         }
 
         buttonPhaseComplete.setOnClickListener {
             playViewModel.nextPhase()
+            if (currGamePhase == GamePhase.INSPECTION) {
+                if (sheriff.value?.playerNum == 1) {
+                    buttonPlayer1.setEnabled(false)
+                    buttonPlayer2.setEnabled(true)
+                    buttonPlayer3.setEnabled(true)
+                }
+                else if (sheriff.value?.playerNum == 2) {
+                    buttonPlayer1.setEnabled(true)
+                    buttonPlayer2.setEnabled(false)
+                    buttonPlayer3.setEnabled(true)
+                }
+                else if (sheriff.value?.playerNum == 3) {
+                    buttonPlayer1.setEnabled(true)
+                    buttonPlayer2.setEnabled(true)
+                    buttonPlayer3.setEnabled(false)
+                }
+            }
         }
 
     }

@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_threePlayerBoardFragment_to_playerStandFragment"
             app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_threePlayerBoardFragment_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
     </fragment>
     <fragment
         android:id="@+id/fourPlayerBoard"
@@ -142,5 +145,14 @@
         <action
             android:id="@+id/action_deckFragment_to_playerStandFragment"
             app:destination="@id/playerStandFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerBagForInspection"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerBagForInspection"
+        android:label="fragment_player_bag_for_inspection"
+        tools:layout="@layout/fragment_player_bag_for_inspection" >
+        <action
+            android:id="@+id/action_playerBagForInspection_to_threePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
     </fragment>
 </navigation>
