@@ -1,6 +1,5 @@
 package edu.gvsu.cis.sheriffofnottingham.models
 
-import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck
@@ -204,8 +203,8 @@ class PlayViewModel : ViewModel() {
             GamePhase.MARKET -> gamePhase.value = GamePhase.LOAD_BAG
             GamePhase.LOAD_BAG -> gamePhase.value = GamePhase.DECLARATION
             GamePhase.DECLARATION -> gamePhase.value = GamePhase.INSPECTION
-            GamePhase.INSPECTION -> gamePhase.value = GamePhase.ENF_OF_ROUND
-            GamePhase.ENF_OF_ROUND -> {
+            GamePhase.INSPECTION -> gamePhase.value = GamePhase.END_OF_ROUND
+            GamePhase.END_OF_ROUND -> {
                 gamePhase.value = GamePhase.MARKET
                 newSheriff(sheriff.value)
             }

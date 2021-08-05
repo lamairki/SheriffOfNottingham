@@ -129,6 +129,7 @@ class PlayerBagFragment : Fragment() {
                     GoodsType.SILK -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
                     GoodsType.MEAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
                     GoodsType.PEPPER -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+                    GoodsType.BACK -> {}
                     null -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.color.transparent))
                 }
             }

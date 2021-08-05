@@ -74,7 +74,7 @@ class ThreePlayerBoard : Fragment() {
                 GamePhase.LOAD_BAG -> buttonPhaseComplete.text = "Phase 'LOAD BAG' Complete"
                 GamePhase.DECLARATION -> buttonPhaseComplete.text = "Phase 'DECLARATION' Complete"
                 GamePhase.INSPECTION -> buttonPhaseComplete.text = "Phase 'INSPECTION' Complete"
-                GamePhase.ENF_OF_ROUND -> buttonPhaseComplete.text = "Phase 'END OF ROUND' Complete"
+                GamePhase.END_OF_ROUND -> buttonPhaseComplete.text = "Phase 'END OF ROUND' Complete"
             }
         })
         playViewModel.currPlayer.observe(this, Observer { z ->

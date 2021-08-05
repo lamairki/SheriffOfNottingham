@@ -24,6 +24,7 @@ lateinit var playViewModelInsp: PlayViewModel
 private const val BAG_MAX = 5
 private const val BAG_MIN = 1
 lateinit var playerInsp: MutableLiveData<Player>
+lateinit var sheriffInsp: MutableLiveData<Player>
 var numPlayersInsp: Int = 0
 var numCardsInsp = 0
 lateinit var cardsInspected: ArrayList<GoodsCard>
@@ -50,6 +51,10 @@ class PlayerBagForInspection : Fragment() {
 
         playerInsp = playViewModelInsp.currPlayer.value!!
 
+        sheriffInsp = playViewModelInsp.sheriff.value!!
+
+        cardsInspected = playerInsp.value?.playerBag!!
+
         val card_1_insp = view.findViewById<ImageView>(R.id.card_1_insp)
         val card_2_insp = view.findViewById<ImageView>(R.id.card_2_insp)
         val card_3_insp = view.findViewById<ImageView>(R.id.card_3_insp)
@@ -63,7 +68,14 @@ class PlayerBagForInspection : Fragment() {
         nameTextView.setText(playerInsp.value?.playerName.toString())
 
         view.findViewById<Button>(R.id.button_truth).setOnClickListener {
-            // TODO: Build logic for truthful declaration
+            playerInsp.value?.addCardsToStand(playerInsp.value?.playerBag)
+            var sheriffOwes = 0
+            for (c in cardsInspected) {
+                sheriffOwes += c.getPenalty()
+            }
+            playerInsp.value?.emptyBag()
+            sheriffInsp.value?.takeGold(sheriffOwes)
+            playerInsp.value?.addGold(sheriffOwes)
         }
 
         view.findViewById<Button>(R.id.button_lies).setOnClickListener {
@@ -96,6 +108,7 @@ class PlayerBagForInspection : Fragment() {
                     GoodsType.SILK -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
                     GoodsType.MEAD -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
                     GoodsType.PEPPER -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+                    GoodsType.BACK -> {}
                     null -> i.setBackground(ContextCompat.getDrawable(requireActivity(), R.color.transparent))
                 }
             }

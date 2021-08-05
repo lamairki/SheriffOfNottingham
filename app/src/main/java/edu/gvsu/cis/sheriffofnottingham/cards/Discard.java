@@ -32,7 +32,10 @@ public class Discard {
     }
 
     public GoodsCard peekAtTop() {
-        return this.goods.get(topOfDiscard);
+        if(topOfDiscard > -1)
+            return this.goods.get(topOfDiscard);
+        else
+            return new GoodsCard(GoodsType.BACK);
     }
 
     public void removeFromTopOfStack() {

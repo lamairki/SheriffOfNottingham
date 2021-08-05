@@ -1,5 +1,7 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -22,6 +24,12 @@ public class Player implements Serializable {
     private ArrayList<GoodsCard> market = new ArrayList<>();
     private ArrayList<GoodsCard> playerBag = new ArrayList<>();
     private ArrayList<GoodsCard> tempDiscard = new ArrayList<>();
+//    private ArrayList<ArrayList<GoodsCard>> playerStand = new ArrayList<ArrayList<GoodsCard>>(5);
+    private ArrayList<GoodsCard> chickenStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> breadStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> cheeseStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> applesStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> contrabandStand = new ArrayList<GoodsCard>();
     private boolean sheriff;
     private final int playerNum;
     private int gold;
@@ -29,12 +37,22 @@ public class Player implements Serializable {
     public Player(int playerNum) {
         this.playerNum = playerNum;
         this.gold = START_GOLD;
+//        this.playerStand.add(chickenStand);
+//        this.playerStand.add(breadStand);
+//        this.playerStand.add(cheeseStand);
+//        this.playerStand.add(applesStand);
+//        this.playerStand.add(contrabandStand);
     }
 
     public Player(int playerNum, String pName) {
         this.playerNum = playerNum;
         this.playerName = pName;
         this.gold = START_GOLD;
+//        this.playerStand.add(chickenStand);
+//        this.playerStand.add(breadStand);
+//        this.playerStand.add(cheeseStand);
+//        this.playerStand.add(applesStand);
+//        this.playerStand.add(contrabandStand);
     }
 
     /**
@@ -107,6 +125,13 @@ public class Player implements Serializable {
     }
 
     /**
+     * This method added to clear players Bag following sheriff inspection
+     */
+    public void emptyBag() {
+        this.playerBag.clear();
+    }
+
+    /**
      * This method added to clear players temp discard stack when discarding cards
      */
     public void clearTempDiscard() {
@@ -172,6 +197,48 @@ public class Player implements Serializable {
         }
         this.gold += gold;
     }
+
+    public void addCardsToStand( ArrayList<GoodsCard> cards) {
+        for ( int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getType() == GoodsType.CHICKENS) {
+                this.chickenStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.BREAD) {
+                this.breadStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.CHEESE) {
+                this.cheeseStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.APPLES) {
+                this.applesStand.add(cards.get(i));
+            }
+            else{
+                this.contrabandStand.add(cards.get(i));
+            }
+        }
+    }
+
+    public ArrayList<GoodsCard> getApplesStand() {
+        return this.applesStand;
+    }
+
+    public ArrayList<GoodsCard> getChickenStand() {
+        return this.chickenStand;
+    }
+
+    public ArrayList<GoodsCard> getBreadStand() {
+        return this.breadStand;
+    }
+
+    public ArrayList<GoodsCard> getCheeseStand() {
+        return this.cheeseStand;
+    }
+
+    public ArrayList<GoodsCard> getContrabandStand() {
+        return this.contrabandStand;
+    }
+
+
 
     public void takeGold(int gold) {
 

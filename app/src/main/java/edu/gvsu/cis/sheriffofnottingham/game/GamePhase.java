@@ -5,6 +5,6 @@ public enum GamePhase {
     LOAD_BAG,
     DECLARATION,
     INSPECTION,
-    ENF_OF_ROUND;
+    END_OF_ROUND;
 
 }

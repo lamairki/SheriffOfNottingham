@@ -53,6 +53,18 @@ class PlayerStandFragment : Fragment() {
         val nameTV = view.findViewById<TextView>(R.id.player_name_stand)
         nameTV.setText(standPlayer.value?.playerName.toString())
 
+        val appleQtyTV = view.findViewById<TextView>(R.id.apple_qty)
+        appleQtyTV.setText("Qty: " + standPlayer.value?.applesStand?.size.toString())
+        val breadQtyTV = view.findViewById<TextView>(R.id.bread_qty)
+        breadQtyTV.setText("Qty: " + standPlayer.value?.breadStand?.size.toString())
+        val cheeseQtyTV = view.findViewById<TextView>(R.id.cheese_qty)
+        cheeseQtyTV.setText("Qty: " + standPlayer.value?.cheeseStand?.size.toString())
+        val chickenQtyTV = view.findViewById<TextView>(R.id.chicken_qty)
+        chickenQtyTV.setText("Qty: " + standPlayer.value?.chickenStand?.size.toString())
+        val contrabandQtyTV = view.findViewById<TextView>(R.id.contraband_qty)
+        contrabandQtyTV.setText("Qty: " + standPlayer.value?.contrabandStand?.size.toString())
+
+
         view.findViewById<Button>(R.id.button_to_board).setOnClickListener {
             if(numPlayersStand == 3) {
                 standPlayViewModel.turnComplete(standPlayer)

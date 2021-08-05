@@ -64,7 +64,7 @@ class DeckFragment : Fragment() {
         }
 
         button_topOfDiscard.setOnClickListener {
-            if (playerDeck.value?.hand?.size!! < HAND_MAX) {
+            if (playerDeck.value?.hand?.size!! < HAND_MAX && playViewModelDeck.discardStack.value?.peekAtTop() != GoodsCard(GoodsType.BACK)) {
                 playViewModelDeck.cardToHandFromDiscard(playerDeck)
                 refreshDiscard(playViewModelDeck.discardStack.value?.peekAtTop(), button_topOfDiscard)
                 currentHandSize_TV.text = playerDeck.value?.hand?.size.toString()
@@ -84,6 +84,7 @@ class DeckFragment : Fragment() {
             GoodsType.SILK -> b.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_silk))
             GoodsType.MEAD -> b.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_mead))
             GoodsType.PEPPER -> b.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.contraband_pepper))
+            GoodsType.BACK -> b.setBackground(ContextCompat.getDrawable(requireActivity(), R.drawable.card_back))
             null -> b.setBackground(ContextCompat.getDrawable(requireActivity(), R.color.transparent))
         }
     }
