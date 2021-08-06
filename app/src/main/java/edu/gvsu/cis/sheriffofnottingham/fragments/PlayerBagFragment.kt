@@ -75,12 +75,16 @@ class PlayerBagFragment : Fragment() {
                 1 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player1)
                 2 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player2)
                 3 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player3)
+                4 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player4)
+                5 -> playViewModelBag.addCardsToHand(cardsToBag, playViewModelBag.player5)
             }
 
             when (playerBag.value?.playerNum) {
                 1 -> cardsInBag = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
                 2 -> cardsInBag = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
                 3 -> cardsInBag = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
+                4 -> cardsInBag = playViewModelBag.getPlayerBag(4) as ArrayList<GoodsCard>
+                5 -> cardsInBag = playViewModelBag.getPlayerBag(5) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
         }
@@ -91,6 +95,8 @@ class PlayerBagFragment : Fragment() {
             1 -> cardsInBag = playViewModelBag.getPlayerBag(1) as ArrayList<GoodsCard>
             2 -> cardsInBag = playViewModelBag.getPlayerBag(2) as ArrayList<GoodsCard>
             3 -> cardsInBag = playViewModelBag.getPlayerBag(3) as ArrayList<GoodsCard>
+            4 -> cardsInBag = playViewModelBag.getPlayerBag(4) as ArrayList<GoodsCard>
+            5 -> cardsInBag = playViewModelBag.getPlayerBag(5) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }

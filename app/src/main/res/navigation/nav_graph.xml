@@ -67,6 +67,9 @@
         <action
             android:id="@+id/action_fourPlayerBoard_to_playerStandFragment"
             app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_fourPlayerBoard_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
     </fragment>
     <fragment
         android:id="@+id/FivePlayerBoardFragment"
@@ -75,6 +78,9 @@
         <action
             android:id="@+id/action_FivePlayerBoardFragment_to_playerStandFragment"
             app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_FivePlayerBoardFragment_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
     </fragment>
     <fragment
         android:id="@+id/playerHandToBagFragment"
@@ -154,5 +160,11 @@
         <action
             android:id="@+id/action_playerBagForInspection_to_threePlayerBoardFragment"
             app:destination="@id/threePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerBagForInspection_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_playerBagForInspection_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
     </fragment>
 </navigation>

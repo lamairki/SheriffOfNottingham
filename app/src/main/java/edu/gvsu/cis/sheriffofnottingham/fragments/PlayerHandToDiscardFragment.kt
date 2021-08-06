@@ -78,12 +78,16 @@ class PlayerHandToDiscardFragment : Fragment() {
                 1 -> playViewModelHandDiscard.addCardsToTempDiscard(cardsToDiscard, playViewModelHandDiscard.player1)
                 2 -> playViewModelHandDiscard.addCardsToTempDiscard(cardsToDiscard, playViewModelHandDiscard.player2)
                 3 -> playViewModelHandDiscard.addCardsToTempDiscard(cardsToDiscard, playViewModelHandDiscard.player3)
+                4 -> playViewModelHandDiscard.addCardsToTempDiscard(cardsToDiscard, playViewModelHandDiscard.player4)
+                5 -> playViewModelHandDiscard.addCardsToTempDiscard(cardsToDiscard, playViewModelHandDiscard.player5)
             }
 
             when (playerHandDiscard.value?.playerNum) {
                 1 -> discardHand = playViewModelHandDiscard.getPlayerHand(1) as ArrayList<GoodsCard>
                 2 -> discardHand = playViewModelHandDiscard.getPlayerHand(2) as ArrayList<GoodsCard>
                 3 -> discardHand = playViewModelHandDiscard.getPlayerHand(3) as ArrayList<GoodsCard>
+                4 -> discardHand = playViewModelHandDiscard.getPlayerHand(4) as ArrayList<GoodsCard>
+                5 -> discardHand = playViewModelHandDiscard.getPlayerHand(5) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
             findNavController().navigate(R.id.action_playerHandToDiscardFragment_to_discardFragment)
@@ -95,6 +99,8 @@ class PlayerHandToDiscardFragment : Fragment() {
             1 -> discardHand = playViewModelHandDiscard.getPlayerHand(1) as ArrayList<GoodsCard>
             2 -> discardHand = playViewModelHandDiscard.getPlayerHand(2) as ArrayList<GoodsCard>
             3 -> discardHand = playViewModelHandDiscard.getPlayerHand(3) as ArrayList<GoodsCard>
+            4 -> discardHand = playViewModelHandDiscard.getPlayerHand(4) as ArrayList<GoodsCard>
+            5 -> discardHand = playViewModelHandDiscard.getPlayerHand(5) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }

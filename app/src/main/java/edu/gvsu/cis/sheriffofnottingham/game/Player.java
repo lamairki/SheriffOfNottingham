@@ -24,7 +24,6 @@ public class Player implements Serializable {
     private ArrayList<GoodsCard> market = new ArrayList<>();
     private ArrayList<GoodsCard> playerBag = new ArrayList<>();
     private ArrayList<GoodsCard> tempDiscard = new ArrayList<>();
-//    private ArrayList<ArrayList<GoodsCard>> playerStand = new ArrayList<ArrayList<GoodsCard>>(5);
     private ArrayList<GoodsCard> chickenStand = new ArrayList<GoodsCard>();
     private ArrayList<GoodsCard> breadStand = new ArrayList<GoodsCard>();
     private ArrayList<GoodsCard> cheeseStand = new ArrayList<GoodsCard>();
@@ -37,22 +36,12 @@ public class Player implements Serializable {
     public Player(int playerNum) {
         this.playerNum = playerNum;
         this.gold = START_GOLD;
-//        this.playerStand.add(chickenStand);
-//        this.playerStand.add(breadStand);
-//        this.playerStand.add(cheeseStand);
-//        this.playerStand.add(applesStand);
-//        this.playerStand.add(contrabandStand);
     }
 
     public Player(int playerNum, String pName) {
         this.playerNum = playerNum;
         this.playerName = pName;
         this.gold = START_GOLD;
-//        this.playerStand.add(chickenStand);
-//        this.playerStand.add(breadStand);
-//        this.playerStand.add(cheeseStand);
-//        this.playerStand.add(applesStand);
-//        this.playerStand.add(contrabandStand);
     }
 
     public int getGold() { return this.gold; }
@@ -146,50 +135,6 @@ public class Player implements Serializable {
     public void removeCardFromTempDiscard(GoodsCard gc) {
         this.hand.add(gc);
         this.tempDiscard.remove(gc);
-    }
-
-    /**
-     * This method is planned to be used when players take
-     * from other players bags.
-     * @param cardType
-     * @return
-     */
-    public GoodsCard takeFromBag(GoodsType cardType){
-
-        for(int i = 0; i < playerBag.size(); i++) {
-
-            if(playerBag.get(i).getType() == cardType) {
-                return playerBag.remove(i);
-            }
-        }
-        throw new IllegalArgumentException("Type not found in this bag.");
-    }
-
-    /**
-     * This method is similar to the one above but it takes
-     * any card that is not the type specified. Useful when
-     * taking "everything but the chickens". Returns 1 card
-     * at a time.
-     * @param cardType
-     * @return
-     */
-    public GoodsCard takeFromBagAnyExcept(GoodsType cardType){
-
-        for(int i = 0; i < playerBag.size(); i++) {
-
-            if(playerBag.get(i).getType() != cardType) {
-                return playerBag.remove(i);
-            }
-        }
-        throw new IllegalArgumentException("All cards in bag are this type.");
-    }
-
-    public boolean isSheriff() {
-        return sheriff;
-    }
-
-    public void setSheriff(boolean sheriff) {
-        this.sheriff = sheriff;
     }
 
     public void addGold(int gold) {

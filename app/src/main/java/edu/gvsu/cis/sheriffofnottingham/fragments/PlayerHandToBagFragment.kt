@@ -77,12 +77,16 @@ class PlayerHandToBagFragment : Fragment() {
                 1 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player1)
                 2 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player2)
                 3 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player3)
+                4 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player4)
+                5 -> playViewModel.addCardsToBag(cardsToBag, playViewModel.player5)
             }
 
             when (player.value?.playerNum) {
                 1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
                 2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
                 3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
+                4 -> hand = playViewModel.getPlayerHand(4) as ArrayList<GoodsCard>
+                5 -> hand = playViewModel.getPlayerHand(5) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
             findNavController().navigate(R.id.action_playerHandFragment_to_playerBagFragment)
@@ -94,6 +98,8 @@ class PlayerHandToBagFragment : Fragment() {
             1 -> hand = playViewModel.getPlayerHand(1) as ArrayList<GoodsCard>
             2 -> hand = playViewModel.getPlayerHand(2) as ArrayList<GoodsCard>
             3 -> hand = playViewModel.getPlayerHand(3) as ArrayList<GoodsCard>
+            4 -> hand = playViewModel.getPlayerHand(4) as ArrayList<GoodsCard>
+            5 -> hand = playViewModel.getPlayerHand(5) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }

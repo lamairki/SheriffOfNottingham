@@ -75,21 +75,29 @@ class FourPlayerBoard : Fragment() {
                 buttonPlayer1.setEnabled(true)
                 buttonPlayer2.setEnabled(false)
                 buttonPlayer3.setEnabled(false)
+                buttonPlayer4.setEnabled(false)
             } else if (currPlayer.value?.playerNum == 2) {
                 buttonPlayer1.setEnabled(false)
                 buttonPlayer2.setEnabled(true)
                 buttonPlayer3.setEnabled(false)
-            } else {
+                buttonPlayer4.setEnabled(false)
+            } else if (currPlayer.value?.playerNum == 3) {
                 buttonPlayer1.setEnabled(false)
                 buttonPlayer2.setEnabled(false)
                 buttonPlayer3.setEnabled(true)
+                buttonPlayer4.setEnabled(false)
+            } else {
+                buttonPlayer1.setEnabled(false)
+                buttonPlayer2.setEnabled(false)
+                buttonPlayer3.setEnabled(false)
+                buttonPlayer4.setEnabled(true)
             }
         }
 
         buttonPlayer1.setOnClickListener {
             if (currGamePhase == GamePhase.INSPECTION) {
                 playViewModel.currPlayer.value = playViewModel.player1
-                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+                findNavController().navigate(R.id.action_fourPlayerBoard_to_playerBagForInspection)
             }
             else
                 findNavController().navigate(R.id.action_fourPlayerBoard_to_playerStandFragment)
@@ -97,7 +105,7 @@ class FourPlayerBoard : Fragment() {
         buttonPlayer2.setOnClickListener {
             if (currGamePhase == GamePhase.INSPECTION) {
                 playViewModel.currPlayer.value = playViewModel.player2
-                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+                findNavController().navigate(R.id.action_fourPlayerBoard_to_playerBagForInspection)
             }
             else
                 findNavController().navigate(R.id.action_fourPlayerBoard_to_playerStandFragment)
@@ -105,7 +113,7 @@ class FourPlayerBoard : Fragment() {
         buttonPlayer3.setOnClickListener {
             if (currGamePhase == GamePhase.INSPECTION) {
                 playViewModel.currPlayer.value = playViewModel.player3
-                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+                findNavController().navigate(R.id.action_fourPlayerBoard_to_playerBagForInspection)
             }
             else
                 findNavController().navigate(R.id.action_fourPlayerBoard_to_playerStandFragment)
@@ -113,7 +121,7 @@ class FourPlayerBoard : Fragment() {
         buttonPlayer4.setOnClickListener {
             if (currGamePhase == GamePhase.INSPECTION) {
                 playViewModel.currPlayer.value = playViewModel.player4
-                findNavController().navigate(R.id.action_threePlayerBoardFragment_to_playerBagForInspection)
+                findNavController().navigate(R.id.action_fourPlayerBoard_to_playerBagForInspection)
             }
             else
                 findNavController().navigate(R.id.action_fourPlayerBoard_to_playerStandFragment)

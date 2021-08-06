@@ -22,7 +22,7 @@ import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
  */
 class NumPlayerFragment : Fragment() {
 
-    private var numPlayers = 3
+    private var numPlayers = 0
 
 lateinit var playViewModel: PlayViewModel
 

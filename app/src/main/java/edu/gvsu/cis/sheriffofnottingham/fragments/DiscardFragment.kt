@@ -76,12 +76,16 @@ class DiscardFragment : Fragment() {
                 1 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player1)
                 2 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player2)
                 3 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player3)
+                4 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player4)
+                5 -> playViewModelHandDiscard.removeCardsFromTempDiscard(cardsToRemove, playViewModelHandDiscard.player5)
             }
 
             when (playerDiscard.value?.playerNum) {
                 1 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(1) as ArrayList<GoodsCard>
                 2 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(2) as ArrayList<GoodsCard>
                 3 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(3) as ArrayList<GoodsCard>
+                4 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(4) as ArrayList<GoodsCard>
+                5 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(5) as ArrayList<GoodsCard>
             }
             refreshCards(cards)
         }
@@ -92,6 +96,8 @@ class DiscardFragment : Fragment() {
             1 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(1) as ArrayList<GoodsCard>
             2 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(2) as ArrayList<GoodsCard>
             3 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(3) as ArrayList<GoodsCard>
+            4 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(4) as ArrayList<GoodsCard>
+            5 -> cardsInDiscard = playViewModelHandDiscard.getPlayerTempDiscard(5) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
     }

@@ -16,21 +16,6 @@ public class Discard {
         }
     }
 
-    /**
-     * This method is intended to let the player look at the cards
-     * in the discard piles.
-     * @param index
-     * @return
-     */
-    public GoodsCard lookAt(int index) {
-        if(index >= goods.size()) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        else {
-            return this.goods.get(index);
-        }
-    }
-
     public GoodsCard peekAtTop() {
         if(topOfDiscard > -1)
             return this.goods.get(topOfDiscard);

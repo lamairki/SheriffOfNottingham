@@ -20,7 +20,6 @@ public class Deck {
     private static final int NUM_CROSSBOW = 5;
     private static final int DECK_SIZE = NUM_APPLES + NUM_BREAD + NUM_CHICKENS + NUM_CHEESE +
             NUM_PEPPER + NUM_MEAD + NUM_SILK + NUM_CROSSBOW;
-
     private ArrayList<GoodsCard> goods = new ArrayList<>(DECK_SIZE);
 
     /**

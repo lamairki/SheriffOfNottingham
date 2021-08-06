@@ -111,6 +111,8 @@ class PlayerBagForInspection : Fragment() {
             1 -> cardsInspected = playViewModelInsp.getPlayerBag(1) as ArrayList<GoodsCard>
             2 -> cardsInspected = playViewModelInsp.getPlayerBag(2) as ArrayList<GoodsCard>
             3 -> cardsInspected = playViewModelInsp.getPlayerBag(3) as ArrayList<GoodsCard>
+            4 -> cardsInspected = playViewModelInsp.getPlayerBag(4) as ArrayList<GoodsCard>
+            5 -> cardsInspected = playViewModelInsp.getPlayerBag(5) as ArrayList<GoodsCard>
         }
         refreshCards(cards)
 

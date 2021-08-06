@@ -10,7 +10,6 @@
     <string name="welcoming">Welcome to Nottingham</string>
     <string name="player_name">Player Name:</string>
     <string name="enter_name">Please enter your name</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="select_num_players">Select the desired number of players</string>
 
     <string name="player_1_name">Player 1</string>
@@ -46,6 +45,4 @@
         <item>4 PLAYERS</item>
         <item>5 PLAYERS</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
