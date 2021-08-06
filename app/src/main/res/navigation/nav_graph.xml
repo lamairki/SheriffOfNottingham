@@ -65,7 +65,7 @@
         android:name="edu.gvsu.cis.sheriffofnottingham.FourPlayerBoard"
         android:label="FourPlayerBoard" >
         <action
-            android:id="@+id/action_fourPlayerBoard_to_playerHandFragment"
+            android:id="@+id/action_fourPlayerBoard_to_playerStandFragment"
             app:destination="@id/playerStandFragment" />
     </fragment>
     <fragment

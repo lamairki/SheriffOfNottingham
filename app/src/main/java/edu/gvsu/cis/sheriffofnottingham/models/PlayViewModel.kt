@@ -21,6 +21,7 @@ class PlayViewModel : ViewModel() {
     private var _deck = MutableLiveData<Deck>()
     private var _discardStack = MutableLiveData<Discard>()
     private var _gamePhase = MutableLiveData<GamePhase>()
+    private var numTurnsAsSheriff: Int = 1
 
 
     val currPlayer
@@ -46,6 +47,9 @@ class PlayViewModel : ViewModel() {
     val discardStack
         get() = _discardStack
 
+    fun getNumTurnsAsSheriff(): Int {
+        return numTurnsAsSheriff
+    }
 
     /**
      * This method fills the rest of the cards in their hand
@@ -122,9 +126,14 @@ class PlayViewModel : ViewModel() {
         }
     }
 
-    fun addCardsToDiscardStack(p: MutableLiveData<Player>, cardsToDiscard: ArrayList<GoodsCard>?, d: MutableLiveData<Discard>) {
+    fun addCardsToDiscardStackFromTempDiscard(p: MutableLiveData<Player>, cardsToDiscard: ArrayList<GoodsCard>?, d: MutableLiveData<Discard>) {
         d.value?.placeOnDiscardPile(cardsToDiscard)
         p.value?.clearTempDiscard()
+    }
+
+    fun addCardsToDiscardStackFromBag(p: MutableLiveData<Player>, cardsToDiscard: ArrayList<GoodsCard>?, d: MutableLiveData<Discard>) {
+        d.value?.placeOnDiscardPile(cardsToDiscard)
+        p.value?.emptyBag()
     }
 
     fun cardToHandFromDiscard(p: MutableLiveData<Player>) {
@@ -206,6 +215,24 @@ class PlayViewModel : ViewModel() {
             GamePhase.INSPECTION -> gamePhase.value = GamePhase.END_OF_ROUND
             GamePhase.END_OF_ROUND -> {
                 gamePhase.value = GamePhase.MARKET
+                if (numPlayers.value == 3) {
+                    player1.value?.fillHand(deck.value)
+                    player2.value?.fillHand(deck.value)
+                    player3.value?.fillHand(deck.value)
+                }
+                else if (numPlayers.value == 4) {
+                    player1.value?.fillHand(deck.value)
+                    player2.value?.fillHand(deck.value)
+                    player3.value?.fillHand(deck.value)
+                    player4.value?.fillHand(deck.value)
+                }
+                else if (numPlayers.value == 5) {
+                    player1.value?.fillHand(deck.value)
+                    player2.value?.fillHand(deck.value)
+                    player3.value?.fillHand(deck.value)
+                    player4.value?.fillHand(deck.value)
+                    player5.value?.fillHand(deck.value)
+                }
                 newSheriff(sheriff.value)
             }
         }
@@ -229,6 +256,7 @@ class PlayViewModel : ViewModel() {
         if (s?.value == player3.value) {
             if (numPlayers.value == 3) {
                 sheriff.value = player1
+                numTurnsAsSheriff += 1
                 currPlayer.value = player2
             }
             else if (numPlayers.value == 4){
@@ -243,6 +271,7 @@ class PlayViewModel : ViewModel() {
         if (s?.value == player4.value) {
             if (numPlayers.value == 4) {
                 sheriff.value = player1
+                numTurnsAsSheriff += 1
                 currPlayer.value = player2
             }
             else {
@@ -252,6 +281,7 @@ class PlayViewModel : ViewModel() {
         }
         if (s?.value == player5.value) {
             sheriff.value = player1
+            numTurnsAsSheriff += 1
             currPlayer.value = player2
         }
     }

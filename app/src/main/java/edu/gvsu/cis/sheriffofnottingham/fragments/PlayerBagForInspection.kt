@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType
+import edu.gvsu.cis.sheriffofnottingham.cards.Discard
 import edu.gvsu.cis.sheriffofnottingham.game.Player
 import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 import java.util.ArrayList
@@ -26,7 +27,8 @@ private const val BAG_MIN = 1
 lateinit var playerInsp: MutableLiveData<Player>
 lateinit var sheriffInsp: MutableLiveData<Player>
 var numPlayersInsp: Int = 0
-var numCardsInsp = 0
+var numCardsPass = 0
+lateinit var discardInsp: MutableLiveData<Discard>
 lateinit var cardsInspected: ArrayList<GoodsCard>
 
 
@@ -55,14 +57,18 @@ class PlayerBagForInspection : Fragment() {
 
         cardsInspected = playerInsp.value?.playerBag!!
 
-        val card_1_insp = view.findViewById<ImageView>(R.id.card_1_insp)
-        val card_2_insp = view.findViewById<ImageView>(R.id.card_2_insp)
-        val card_3_insp = view.findViewById<ImageView>(R.id.card_3_insp)
-        val card_4_insp = view.findViewById<ImageView>(R.id.card_4_insp)
-        val card_5_insp = view.findViewById<ImageView>(R.id.card_5_insp)
-        val card_6_insp = view.findViewById<ImageView>(R.id.card_6_insp)
+        discardInsp = playViewModelInsp.discardStack
+
+        val card_1_insp = view.findViewById<ToggleButton>(R.id.card_1_insp)
+        val card_2_insp = view.findViewById<ToggleButton>(R.id.card_2_insp)
+        val card_3_insp = view.findViewById<ToggleButton>(R.id.card_3_insp)
+        val card_4_insp = view.findViewById<ToggleButton>(R.id.card_4_insp)
+        val card_5_insp = view.findViewById<ToggleButton>(R.id.card_5_insp)
+        val card_6_insp = view.findViewById<ToggleButton>(R.id.card_6_insp)
 
         val cards = arrayOf(card_1_insp, card_2_insp, card_3_insp, card_4_insp, card_5_insp, card_6_insp)
+
+        setupCardListeners(cards)
 
         val nameTextView = view.findViewById<TextView>(R.id.player_name_insp)
         nameTextView.setText(playerInsp.value?.playerName.toString())
@@ -79,7 +85,22 @@ class PlayerBagForInspection : Fragment() {
         }
 
         view.findViewById<Button>(R.id.button_lies).setOnClickListener {
-            // TODO: Build logic for false declaration
+            var cardsThatPass: ArrayList<GoodsCard> = ArrayList<GoodsCard>()
+            var cardsToConfiscate: ArrayList<GoodsCard> = ArrayList<GoodsCard>()
+            for (i in 0..(cardsInspected.size-1)) {
+                if (cards.get(i).isChecked)
+                    cardsThatPass.add(cardsInspected.get(i))
+                else
+                    cardsToConfiscate.add(cardsInspected.get(i))
+            }
+            var playerOwes = 0
+            for (c in cardsToConfiscate) {
+                playerOwes += c.getPenalty()
+            }
+            playerInsp.value?.takeGold(playerOwes)
+            sheriffInsp.value?.addGold(playerOwes)
+            playerInsp.value?.addCardsToStand(cardsThatPass)
+            playViewModelInsp.addCardsToDiscardStackFromBag(playerInsp, cardsToConfiscate, discardInsp)
         }
 
         view.findViewById<Button>(R.id.exit_bag).setOnClickListener {
@@ -95,7 +116,20 @@ class PlayerBagForInspection : Fragment() {
 
     }
 
-    private fun refreshCards(cards: Array<ImageView>) {
+    private fun setupCardListeners(cards: Array<ToggleButton>) {
+        for (i in cards) {
+            i.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    numCardsPass++
+                }
+                else {
+                    numCardsPass--
+                }
+            }
+        }
+    }
+
+    private fun refreshCards(cards: Array<ToggleButton>) {
         var c: Int = 0
         for (i in cards) {
             if (c < cardsInspected.size) {

@@ -55,6 +55,8 @@ public class Player implements Serializable {
 //        this.playerStand.add(contrabandStand);
     }
 
+    public int getGold() { return this.gold; }
+
     /**
      * Getter method for player name
      */

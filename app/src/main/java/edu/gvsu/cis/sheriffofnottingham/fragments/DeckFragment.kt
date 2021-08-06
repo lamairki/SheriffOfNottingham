@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import edu.gvsu.cis.sheriffofnottingham.R
-import edu.gvsu.cis.sheriffofnottingham.cards.Discard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsCard
 import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType
 import edu.gvsu.cis.sheriffofnottingham.game.Player
@@ -53,7 +51,7 @@ class DeckFragment : Fragment() {
         currentHandSize_TV.text = playerDeck.value?.hand?.size.toString()
 
         view.findViewById<Button>(R.id.add_cards_to_discard).setOnClickListener {
-            playViewModelDeck.addCardsToDiscardStack(playerDeck,
+            playViewModelDeck.addCardsToDiscardStackFromTempDiscard(playerDeck,
                 playerDeck.value?.tempDiscard, playViewModelDeck.discardStack)
             findNavController().navigate(R.id.action_deckFragment_to_playerStandFragment)
         }
