@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/OpeningFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.OpeningFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.OpeningFragment"
         android:label="@string/opening_fragment_label"
         tools:layout="@layout/fragment_opening">
 
@@ -20,23 +20,151 @@
 
     <fragment
         android:id="@+id/SetupFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.SetupFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.SetupFragment"
         android:label="@string/setup_fragment_label"
         tools:layout="@layout/fragment_setup">
         <action
-            android:id="@+id/action_SetupFragment_to_OpeningFragment"
-            app:destination="@id/OpeningFragment" />
+            android:id="@+id/action_SetupFragment_to_ThreePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_SetupFragment_self"
+            app:destination="@id/SetupFragment" />
+        <action
+            android:id="@+id/action_SetupFragment_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_SetupFragment_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
     </fragment>
 
 
 
     <fragment
         android:id="@+id/numPlayerFragment"
-        android:name="edu.gvsu.cis.sheriffofnottingham.NumPlayerFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.NumPlayerFragment"
         android:label="fragment_num_player"
         tools:layout="@layout/fragment_num_player" >
         <action
             android:id="@+id/action_numPlayerFragment_to_SetupFragment"
             app:destination="@id/SetupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/threePlayerBoardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.ThreePlayerBoard"
+        android:label="fragment_board"
+        tools:layout="@layout/fragment_threeplayerboard" >
+        <action
+            android:id="@+id/action_threePlayerBoardFragment_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_threePlayerBoardFragment_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourPlayerBoard"
+        android:name="edu.gvsu.cis.sheriffofnottingham.FourPlayerBoard"
+        android:label="FourPlayerBoard" >
+        <action
+            android:id="@+id/action_fourPlayerBoard_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_fourPlayerBoard_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
+    </fragment>
+    <fragment
+        android:id="@+id/FivePlayerBoardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.FivePlayerBoard"
+        android:label="BoardFragment" >
+        <action
+            android:id="@+id/action_FivePlayerBoardFragment_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_FivePlayerBoardFragment_to_playerBagForInspection"
+            app:destination="@id/playerBagForInspection" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerHandToBagFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerHandToBagFragment"
+        android:label="PlayerHandToBagFragment">
+        <action
+            android:id="@+id/action_playerHandFragment_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
+        <action
+            android:id="@+id/action_playerHandFragment_to_playerBagFragment"
+            app:destination="@id/playerBagFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerBagFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerBagFragment"
+        android:label="PlayerBagFragment" >
+        <action
+            android:id="@+id/action_playerBagFragment_to_playerHandFragment"
+            app:destination="@id/playerHandToBagFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerStandFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerStandFragment"
+        android:label="fragment_player_stand"
+        tools:layout="@layout/fragment_player_stand" >
+        <action
+            android:id="@+id/action_playerStandFragment_to_playerHandFragment"
+            app:destination="@id/playerHandToBagFragment" />
+        <action
+            android:id="@+id/action_playerStandFragment_to_threePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerStandFragment_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_playerStandFragment_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerStandFragment_to_playerHandToDiscardFragment"
+            app:destination="@id/playerHandToDiscardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerHandToDiscardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerHandToDiscardFragment"
+        android:label="fragment_player_hand_to_discard"
+        tools:layout="@layout/fragment_player_hand_to_discard" >
+        <action
+            android:id="@+id/action_playerHandToDiscardFragment_to_deckFragment"
+            app:destination="@id/deckFragment" />
+        <action
+            android:id="@+id/action_playerHandToDiscardFragment_to_discardFragment"
+            app:destination="@id/discardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discardFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.DiscardFragment"
+        android:label="fragment_discard"
+        tools:layout="@layout/fragment_discard" >
+        <action
+            android:id="@+id/action_discardFragment_to_playerHandToDiscardFragment"
+            app:destination="@id/playerHandToDiscardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deckFragment"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.DeckFragment"
+        android:label="fragment_deck"
+        tools:layout="@layout/fragment_deck" >
+        <action
+            android:id="@+id/action_deckFragment_to_playerStandFragment"
+            app:destination="@id/playerStandFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerBagForInspection"
+        android:name="edu.gvsu.cis.sheriffofnottingham.fragments.PlayerBagForInspection"
+        android:label="fragment_player_bag_for_inspection"
+        tools:layout="@layout/fragment_player_bag_for_inspection" >
+        <action
+            android:id="@+id/action_playerBagForInspection_to_threePlayerBoardFragment"
+            app:destination="@id/threePlayerBoardFragment" />
+        <action
+            android:id="@+id/action_playerBagForInspection_to_fourPlayerBoard"
+            app:destination="@id/fourPlayerBoard" />
+        <action
+            android:id="@+id/action_playerBagForInspection_to_FivePlayerBoardFragment"
+            app:destination="@id/FivePlayerBoardFragment" />
     </fragment>
 </navigation>

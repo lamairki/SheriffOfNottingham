@@ -1,6 +1,8 @@
 package edu.gvsu.cis.sheriffofnottingham.game;
 
-import java.lang.reflect.Array;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import edu.gvsu.cis.sheriffofnottingham.cards.Deck;
@@ -13,13 +15,20 @@ import edu.gvsu.cis.sheriffofnottingham.cards.GoodsType;
  *              are the sheriff.
  */
 
-public class Player {
+public class Player implements Serializable {
 
-    private static final int HAND_SIZE = 5;
+    private static final int HAND_SIZE = 6;
     private static final int START_GOLD = 10;
+    private String playerName = "";
     private ArrayList<GoodsCard> hand = new ArrayList<>(HAND_SIZE);
     private ArrayList<GoodsCard> market = new ArrayList<>();
     private ArrayList<GoodsCard> playerBag = new ArrayList<>();
+    private ArrayList<GoodsCard> tempDiscard = new ArrayList<>();
+    private ArrayList<GoodsCard> chickenStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> breadStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> cheeseStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> applesStand = new ArrayList<GoodsCard>();
+    private ArrayList<GoodsCard> contrabandStand = new ArrayList<GoodsCard>();
     private boolean sheriff;
     private final int playerNum;
     private int gold;
@@ -28,6 +37,28 @@ public class Player {
         this.playerNum = playerNum;
         this.gold = START_GOLD;
     }
+
+    public Player(int playerNum, String pName) {
+        this.playerNum = playerNum;
+        this.playerName = pName;
+        this.gold = START_GOLD;
+    }
+
+    public int getGold() { return this.gold; }
+
+    /**
+     * Getter method for player name
+     */
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    /**
+     * Getter for player number
+     */
+    public int getPlayerNum() { return playerNum; }
+
+    public ArrayList<GoodsCard> getTempDiscard() { return tempDiscard; }
 
     /**
      * This method fills the rest of the cards in their hand
@@ -40,9 +71,15 @@ public class Player {
         }
     }
 
-    public void addToBag(GoodsCard card) {
-        this.playerBag.add(card);
+    public ArrayList<GoodsCard> getHand() {
+        return this.hand;
     }
+
+    public int getHandSize(){
+        return this.HAND_SIZE;
+    }
+
+    public ArrayList<GoodsCard> getPlayerBag() { return this.playerBag; }
 
     /**
      * This method takes the entire contents of the bag and
@@ -55,47 +92,49 @@ public class Player {
     }
 
     /**
-     * This method is planned to be used when players take
-     * from other players bags.
-     * @param cardType
-     * @return
+     * This method added to add cards to the players bags from their hand
      */
-    public GoodsCard takeFromBag(GoodsType cardType){
-
-        for(int i = 0; i < playerBag.size(); i++) {
-
-            if(playerBag.get(i).getType() == cardType) {
-                return playerBag.remove(i);
-            }
-        }
-        throw new IllegalArgumentException("Type not found in this bag.");
+    public void addCardToBag(GoodsCard gc) {
+        this.playerBag.add(gc);
+        this.hand.remove(gc);
     }
 
     /**
-     * This method is similar to the one above but it takes
-     * any card that is not the type specified. Useful when
-     * taking "everything but the chickens". Returns 1 card
-     * at a time.
-     * @param cardType
-     * @return
+     * This method added to add cards to the players hand from their bag
      */
-    public GoodsCard takeFromBagAnyExcept(GoodsType cardType){
-
-        for(int i = 0; i < playerBag.size(); i++) {
-
-            if(playerBag.get(i).getType() != cardType) {
-                return playerBag.remove(i);
-            }
-        }
-        throw new IllegalArgumentException("All cards in bag are this type.");
+    public void addCardToHand(GoodsCard gc) {
+        this.hand.add(gc);
+        this.playerBag.remove(gc);
     }
 
-    public boolean isSheriff() {
-        return sheriff;
+    /**
+     * This method added to add cards to the players temp discard from their hand
+     */
+    public void addCardToTempDiscard(GoodsCard gc) {
+        this.tempDiscard.add(gc);
+        this.hand.remove(gc);
     }
 
-    public void setSheriff(boolean sheriff) {
-        this.sheriff = sheriff;
+    /**
+     * This method added to clear players Bag following sheriff inspection
+     */
+    public void emptyBag() {
+        this.playerBag.clear();
+    }
+
+    /**
+     * This method added to clear players temp discard stack when discarding cards
+     */
+    public void clearTempDiscard() {
+        this.tempDiscard.clear();
+    }
+
+    /**
+     * This method added to add cards to the players temp discard from their hand
+     */
+    public void removeCardFromTempDiscard(GoodsCard gc) {
+        this.hand.add(gc);
+        this.tempDiscard.remove(gc);
     }
 
     public void addGold(int gold) {
@@ -106,6 +145,48 @@ public class Player {
         this.gold += gold;
     }
 
+    public void addCardsToStand( ArrayList<GoodsCard> cards) {
+        for ( int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getType() == GoodsType.CHICKENS) {
+                this.chickenStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.BREAD) {
+                this.breadStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.CHEESE) {
+                this.cheeseStand.add(cards.get(i));
+            }
+            else if (cards.get(i).getType() == GoodsType.APPLES) {
+                this.applesStand.add(cards.get(i));
+            }
+            else{
+                this.contrabandStand.add(cards.get(i));
+            }
+        }
+    }
+
+    public ArrayList<GoodsCard> getApplesStand() {
+        return this.applesStand;
+    }
+
+    public ArrayList<GoodsCard> getChickenStand() {
+        return this.chickenStand;
+    }
+
+    public ArrayList<GoodsCard> getBreadStand() {
+        return this.breadStand;
+    }
+
+    public ArrayList<GoodsCard> getCheeseStand() {
+        return this.cheeseStand;
+    }
+
+    public ArrayList<GoodsCard> getContrabandStand() {
+        return this.contrabandStand;
+    }
+
+
+
     public void takeGold(int gold) {
 
         if(gold < this.gold) {
@@ -113,22 +194,11 @@ public class Player {
         }
         else {
             //TODO look at rules for how players pay more than they own in gold
+            //PLayer must pay with legal goods first (the value = gold) if no legal goods
+            //then must pay with contraband.  If all legal and illegal goods have been exhausted,
+            //then the debt is considered paid.
+            //(If you owe 1 coin but only have an apple (value 2) to pay with, you forfeit the
+            //entire value of the apple
         }
-    }
-
-    public ArrayList<GoodsCard> getHand() {
-        return this.hand;
-    }
-
-    public ArrayList<GoodsCard> getPlayerBag() {
-        return this.playerBag;
-    }
-
-    public ArrayList<GoodsCard> getMarket() {
-        return this.market;
-    }
-
-    public int getGold() {
-        return this.gold;
     }
 }

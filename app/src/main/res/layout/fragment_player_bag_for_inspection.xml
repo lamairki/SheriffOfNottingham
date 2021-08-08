@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:screenOrientation="landscape"
+    tools:context=".PlayerBagForInspectionFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/player_name_insp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="@string/player_name"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_1_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/card_2_insp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_2_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/card_3_insp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/card_1_insp"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_3_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/card_4_insp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/card_2_insp"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_4_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/card_5_insp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/card_3_insp"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_5_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/card_6_insp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/card_4_insp"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/card_6_insp"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/legal_goods_apples"
+        android:text=""
+        android:textOff=""
+        android:textOn="Pass"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/card_5_insp"
+        app:layout_constraintTop_toBottomOf="@id/player_name_insp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_truth"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="35sp"
+        android:text="@string/truth"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/exit_bag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_lies"
+        app:layout_constraintTop_toBottomOf="@id/card_3_insp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_lies"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="35sp"
+        android:text="@string/lies"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/exit_bag"
+        app:layout_constraintEnd_toStartOf="@id/button_truth"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_3_insp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/exit_bag"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="35sp"
+        android:text="@string/return_label"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_truth" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

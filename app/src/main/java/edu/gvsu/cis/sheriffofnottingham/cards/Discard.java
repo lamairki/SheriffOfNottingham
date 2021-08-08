@@ -7,28 +7,25 @@ public class Discard {
     /* This is the initial size of the discard pile */
     private static final int START_SIZE = 5;
     private ArrayList<GoodsCard> goods = new ArrayList<>(START_SIZE);
+    private int topOfDiscard = -1;
 
     public Discard(Deck d) {
         while(goods.size() < START_SIZE) {
             goods.add(d.drawCard());
+            topOfDiscard = topOfDiscard + 1;
         }
     }
 
-    /**
-     * This method is intended to let the player look at the cards
-     * in the discard piles.
-     * @param index
-     * @return
-     */
-    public GoodsCard lookAt(int index) {
+    public GoodsCard peekAtTop() {
+        if(topOfDiscard > -1)
+            return this.goods.get(topOfDiscard);
+        else
+            return new GoodsCard(GoodsType.BACK);
+    }
 
-        // Checking for index may be unnecessary as is, but leaves the option for more custom handling
-        if(index < goods.size() && index >= 0) {
-            return goods.get(index);
-        }
-        else {
-            throw new ArrayIndexOutOfBoundsException();
-        }
+    public void removeFromTopOfStack() {
+        this.goods.remove(topOfDiscard);
+        topOfDiscard = topOfDiscard - 1;
     }
 
     public GoodsCard draw() {
@@ -46,3 +43,15 @@ public class Discard {
         return this.goods.size();
     }
 }
+    /**
+     * Places the players temporary discard pile on top of the collective discard pile
+     * Assuming that the top of the pile is the last element of the array
+     * @param tempDiscardPile
+     */
+    public void placeOnDiscardPile(ArrayList<GoodsCard> tempDiscardPile){
+        topOfDiscard = topOfDiscard + tempDiscardPile.size();
+        this.goods.addAll(tempDiscardPile);
+
+        }
+}
+

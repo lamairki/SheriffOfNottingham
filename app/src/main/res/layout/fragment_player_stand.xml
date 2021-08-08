@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:screenOrientation="landscape"
+    tools:context=".fragments.PlayerStandFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/player_name_stand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="@string/player_name"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stand_apples"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:src="@drawable/legal_goods_apples"
+        app:layout_constraintStart_toEndOf="@id/apple_qty"
+        app:layout_constraintEnd_toStartOf="@id/button_to_hand"
+        app:layout_constraintTop_toBottomOf="@id/player_name_stand"
+        app:layout_constraintBottom_toTopOf="@id/stand_bread"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stand_cheese"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:src="@drawable/legal_goods_cheese"
+        app:layout_constraintStart_toEndOf="@id/button_to_hand"
+        app:layout_constraintEnd_toStartOf="@id/cheese_qty"
+        app:layout_constraintTop_toBottomOf="@id/player_name_stand"
+        app:layout_constraintBottom_toTopOf="@id/stand_chicken"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stand_bread"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:src="@drawable/legal_goods_bread"
+        app:layout_constraintStart_toEndOf="@id/bread_qty"
+        app:layout_constraintEnd_toStartOf="@id/button_to_hand"
+        app:layout_constraintTop_toBottomOf="@id/stand_apples"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stand_chicken"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:src="@drawable/legal_goods_chicken"
+        app:layout_constraintStart_toEndOf="@id/button_to_hand"
+        app:layout_constraintEnd_toStartOf="@id/chicken_qty"
+        app:layout_constraintTop_toBottomOf="@id/stand_cheese"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contraband_stand"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Contraband"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/contraband_qty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_name_stand" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/apple_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Qty: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/stand_apples"
+        app:layout_constraintEnd_toStartOf="@id/stand_apples"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stand_apples" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bread_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Qty: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/stand_bread"
+        app:layout_constraintEnd_toStartOf="@id/stand_bread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/stand_bread" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cheese_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Qty: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/stand_cheese"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stand_cheese"
+        app:layout_constraintTop_toTopOf="@id/stand_cheese" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/chicken_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Qty: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/stand_chicken"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/stand_chicken"
+        app:layout_constraintTop_toTopOf="@id/stand_chicken" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/contraband_qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:text="Qty: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contraband_stand" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_to_hand"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="25sp"
+        android:text="@string/go_to_hand"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/button_to_board"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/contraband_qty" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_to_board"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/berkshire_swash"
+        android:textSize="25sp"
+        android:text="@string/return_label"
+        android:background="@color/green"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_to_hand" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

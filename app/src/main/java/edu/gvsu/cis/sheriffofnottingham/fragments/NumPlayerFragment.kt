@@ -1,4 +1,4 @@
-package edu.gvsu.cis.sheriffofnottingham
+package edu.gvsu.cis.sheriffofnottingham.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,18 +9,22 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import androidx.fragment.app.activityViewModels
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import edu.gvsu.cis.sheriffofnottingham.R
+import edu.gvsu.cis.sheriffofnottingham.cards.Deck
+import edu.gvsu.cis.sheriffofnottingham.cards.Discard
+import edu.gvsu.cis.sheriffofnottingham.models.PlayViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class NumPlayerFragment : Fragment() {
 
-    private var numPlayers = 3
+    private var numPlayers = 0
 
-    private val model: NottinghamDataViewModel by activityViewModels()
+lateinit var playViewModel: PlayViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +50,7 @@ class NumPlayerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        playViewModel = ViewModelProvider(requireActivity()).get(PlayViewModel::class.java)
 
         val spinner: Spinner = view.findViewById(R.id.num_player_dropdown)
 
@@ -62,7 +67,13 @@ class NumPlayerFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.button_to_setup).setOnClickListener {
-            findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment)
+            playViewModel.numPlayers.value = numPlayers
+            playViewModel.deck.value = Deck()
+            playViewModel.shuffleDeck()
+            playViewModel.discardStack.value = Discard(playViewModel.deck.value)
+            val bundle = bundleOf("playerNum" to 1)
+            findNavController().navigate(R.id.action_numPlayerFragment_to_SetupFragment, bundle)
+
         }
     }
 }
