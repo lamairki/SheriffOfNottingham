@@ -113,6 +113,15 @@ class ThreePlayerBoard : Fragment() {
 
         buttonPhaseComplete.setOnClickListener {
             playViewModel.nextPhase()
+            currGamePhase = playViewModel.gamePhase.value!!
+            when (currGamePhase) {
+                GamePhase.MARKET -> buttonPhaseComplete.text = "Phase 'MARKET' Complete"
+                GamePhase.LOAD_BAG -> buttonPhaseComplete.text = "Phase 'LOAD BAG' Complete"
+                GamePhase.DECLARATION -> buttonPhaseComplete.text = "Phase 'DECLARATION' Complete"
+                GamePhase.INSPECTION -> buttonPhaseComplete.text = "Phase 'INSPECTION' Complete"
+                GamePhase.END_OF_ROUND -> buttonPhaseComplete.text = "Phase 'END OF ROUND' Complete"
+            }
+            currPlayer = playViewModel.currPlayer.value!!
             if (currGamePhase == GamePhase.INSPECTION) {
                 if (sheriff.value?.playerNum == 1) {
                     buttonPlayer1.setEnabled(false)
@@ -128,6 +137,21 @@ class ThreePlayerBoard : Fragment() {
                     buttonPlayer1.setEnabled(true)
                     buttonPlayer2.setEnabled(true)
                     buttonPlayer3.setEnabled(false)
+                }
+            }
+            else {
+                if (currPlayer.value?.playerNum == 1) {
+                    buttonPlayer1.setEnabled(true)
+                    buttonPlayer2.setEnabled(false)
+                    buttonPlayer3.setEnabled(false)
+                } else if (currPlayer.value?.playerNum == 2) {
+                    buttonPlayer1.setEnabled(false)
+                    buttonPlayer2.setEnabled(true)
+                    buttonPlayer3.setEnabled(false)
+                } else {
+                    buttonPlayer1.setEnabled(false)
+                    buttonPlayer2.setEnabled(false)
+                    buttonPlayer3.setEnabled(true)
                 }
             }
             if (currGamePhase == GamePhase.END_OF_ROUND) {
